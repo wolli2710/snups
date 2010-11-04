@@ -14,6 +14,10 @@ gem 'devise', '1.1.3'
 # Deploy with Capistrano
 # gem 'capistrano'
 
+# uncomment the next line if you wish to deploy to Heroku
+gem 'heroku', '1.11.0', :group => :development
+
+
 # To use debugger
 # gem 'ruby-debug'
 
