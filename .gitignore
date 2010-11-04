@@ -1,0 +1,13 @@
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/**/*
+
+config/database.yml
+config/initializers/secret_token.rb
+log/*.log
+*.swp
+tmp/*
+doc/api
+doc/app
+db/*.sqlite3
