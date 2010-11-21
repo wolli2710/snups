@@ -6,6 +6,7 @@ gem 'rails', '3.0.1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'devise', '1.1.3'
+gem 'builder', '~>2.0'
 
 # Use unicorn as the web server
 # gem 'unicorn'
