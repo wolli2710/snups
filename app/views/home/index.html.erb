@@ -1,2 +1,14 @@
 <h1>Home</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+
+
+<p><ul>
+
+	<%= @users.each do |user| %>
+		<li>
+			<%= user.email %>
+			<%= image_tag user.gravatar_url %>
+
+		</li>
+	<%end%>
+
+</ul></p>
