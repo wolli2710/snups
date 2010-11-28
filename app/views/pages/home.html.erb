@@ -1,7 +1,12 @@
 <h1>Home</h1>
 
 <ul>
-
+<% @users.each do |user| %>
+	<li>
+			<%= image_tag user.gravatar_url %>
+			<%= user.email %>
+	</li>
+<% end %>
 
 <% @missions.each do |mission| %>
 	<li>
@@ -16,12 +21,6 @@
 	</li>
 <%end%>
 
-
-<% @users.each do |user| %>
-	<li>
-	  <%= user.email %>
-	</li>
-<%end%>
 
 
 </ul>
