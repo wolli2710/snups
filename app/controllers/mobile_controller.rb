@@ -1,8 +1,8 @@
 class MobileController < ApplicationController
   
-  skip_before_filter :verify_authenticity_token, :only => :create
+  skip_before_filter :verify_authenticity_token, :only => :login
 
-  def create
+  def login
     status = "ERROR"
     message = "Login failed"
         

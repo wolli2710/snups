@@ -1,0 +1,28 @@
+<h1>Home</h1>
+
+<ul>
+
+
+<% @missions.each do |mission| %>
+	<li>
+	  <%= mission.title %>
+	</li>
+<%end%>
+
+
+<% @images.each do |image| %>
+	<li>
+	  <%= image.user_id %>
+	</li>
+<%end%>
+
+
+<% @users.each do |user| %>
+	<li>
+	  <%= user.email %>
+	</li>
+<%end%>
+
+
+</ul>
+<p>Find me in app/views/home/index.html.erb</p>

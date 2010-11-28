@@ -8,6 +8,8 @@ gem 'rails', '3.0.1'
 gem 'devise', '1.1.3'
 gem 'builder', '~>2.0'
 
+gem 'mini_magick'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 

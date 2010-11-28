@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
   has_many :image
+  
+  include MiniMagick
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
   devise :database_authenticatable, :registerable,
