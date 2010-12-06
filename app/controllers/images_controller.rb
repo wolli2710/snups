@@ -1,30 +1,31 @@
 class ImagesController < ApplicationController
   
-  def new    
-  end
-  
+skip_before_filter :verify_authenticity_token, :only => :create 
+
   def create
-    image = Image.new(params[:image])
+    image = Image.new(:user_id => params[:image][:user_id],
+                      :mission_id => params[:image][:mission_id])
+    
     imageName = Time.now.to_s+params[:image][:user_id]
-    #image.nameHash = Digest::SHA1.hexdigest(imageName)
+    image.nameHash = Digest::SHA1.hexdigest(imageName)
     
-    image.save
-=begin
-    i=0
-    #inputPath = "lena.jpg"
-    mainPath = "D:/snups/public/images/"
-    output = mainPath + "lena"+i.to_s+".jpg"
-    outputSmall = mainPath + "lena"+i.to_s+"_small.jpg"
+    mainPath = "#{RAILS_ROOT}/public/images/upload/"
+    inputPath = params[:image][:data].path()
     
-    image = MiniMagick::Image.open("D:/snups/public/images/" + inputPath)
-    image.resize "100x100"
-    image.write  outputSmall
+    output_high = mainPath + image.nameHash.to_s+"_high.jpg"
+    output_medium = mainPath + image.nameHash.to_s+"_medium.jpg"
+    output_low = mainPath + image.nameHash.to_s+"_low.jpg"
     
-    image.resize "400x400"
-    image.write output
+    imageData = MiniMagick::Image.open(inputPath)
+    image.write  output_high
     
-    @images = Image.all
-    @missions = Mission.all
-=end
+    image.resize "300x200"
+    image.write  output_medium
+    
+    image.resize "100x65"
+    image.write output_low
+    
+    image.save()
+
   end
 end

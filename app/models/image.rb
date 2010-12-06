@@ -4,9 +4,9 @@ class Image < ActiveRecord::Base
 	belongs_to :mission
 	belongs_to :user
   
-  attr_accessible :user_id, :mission_id, :imageHash
+  attr_accessible :user_id, :mission_id, :nameHash
   
   validates :user_id, :presence => true, :numericality => true
   validates :mission_id, :presence => true, :numericality => true
-  validates :new_image, :presence => true
+  validates :nameHash, :presence => true
 end
