@@ -1,9 +1,7 @@
 class User < ActiveRecord::Base
   has_many :image
  # has_many :follower class user
-  
-  include MiniMagick
-  
+    
   include Gravtastic
   gravtastic
   

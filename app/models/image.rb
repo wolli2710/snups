@@ -1,4 +1,7 @@
 class Image < ActiveRecord::Base
+  
+  include MiniMagick
+   
 	has_many :comment
 	has_many :rating
 	belongs_to :mission

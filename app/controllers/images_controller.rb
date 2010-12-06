@@ -1,31 +1,34 @@
 class ImagesController < ApplicationController
   
-skip_before_filter :verify_authenticity_token, :only => :create 
-
-  def create
+  skip_before_filter :verify_authenticity_token, :only => :create 
+  
+  def create  
+    #database---------------------------------------------------#
     image = Image.new(:user_id => params[:image][:user_id],
                       :mission_id => params[:image][:mission_id])
-    
     imageName = Time.now.to_s+params[:image][:user_id]
     image.nameHash = Digest::SHA1.hexdigest(imageName)
+    #-----------------------------------------------------------#
     
-    mainPath = "#{RAILS_ROOT}/public/images/upload/"
+    #create images----------------------------------------------#
     inputPath = params[:image][:data].path()
     
-    output_high = mainPath + image.nameHash.to_s+"_high.jpg"
-    output_medium = mainPath + image.nameHash.to_s+"_medium.jpg"
-    output_low = mainPath + image.nameHash.to_s+"_low.jpg"
+    mainPath = "D:/snups/public/images/"
+    output_high = mainPath + image.nameHash + "_high.jpg"
+    output_medium = mainPath + image.nameHash + "_medium.jpg"
+    output_low = mainPath + image.nameHash + "_low.jpg"
     
-    imageData = MiniMagick::Image.open(inputPath)
-    image.write  output_high
+    imageName = MiniMagick::Image.open(inputPath)
     
-    image.resize "300x200"
-    image.write  output_medium
+    imageName.write  output_high
     
-    image.resize "100x65"
-    image.write output_low
+    imageName.resize "300x200"
+    imageName.write output_medium
     
+    imageName.resize "100x65"
+    imageName.write output_low
+    
+    #store to database-----------------------------------------#
     image.save()
-
   end
 end

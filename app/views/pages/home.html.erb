@@ -1,27 +1,13 @@
 <h1>Home</h1>
-
 <ul>
-<% @users.each do |user| %>
-	<li>
-			<%= image_tag user.gravatar_url %>
-			<%= user.email %>
-	</li>
-<% end %>
-
-<% @missions.each do |mission| %>
-	<li>
-	  <%= mission.title %>
-	</li>
-<%end%>
-
-
-<% @images.each do |image| %>
-	<li>
-	  <%= image.user_id %>
-	</li>
-<%end%>
-
-
-
+    <% @images.each do |image| %>
+    <li>
+    	<%= image_tag User.find(image.user_id).gravatar_url %>
+    	<% i = image.nameHash + "_medium.jpg" %>
+        <%= image_tag i %>
+    </li>
+    <% end %>
 </ul>
-<p>Find me in app/views/home/index.html.erb</p>
+<p>
+    Find me in app/views/home/index.html.erb
+</p>

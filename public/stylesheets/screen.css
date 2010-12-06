@@ -45,6 +45,10 @@ padding-top:10px; padding-left:15px; padding-right:10px; padding-bottom:15px;
 position:top;
 }
 
+#inhalt li{
+	list-style:none;
+}
+
 div#oben {
 margin-top:-80px;
 margin-left:-20px;

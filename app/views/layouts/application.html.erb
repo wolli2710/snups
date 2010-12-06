@@ -81,15 +81,16 @@
             </div>
             <div id="content">
                 <div id="inhalt">
+                	 
                     <div id="oben">
-                        <% flash.each do |name, msg| %>
+                    </div>
+					                       <% flash.each do |name, msg| %>
                         <%= content_tag :div, msg, :id => "flash_#{name}" %>
                         <% end %>
                         <%= yield %>
+                    <div id="llllinks">
                     </div>
-                    <div id="links">
-                    </div>
-                    <div id="rechts">
+                    <div id="lllrechts">
                     </div>
                     <div id="unten">
                         <%= link_to "About" , impressum_path() %>
