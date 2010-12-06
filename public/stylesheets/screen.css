@@ -1,0 +1,165 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+margin:0px; padding:0px;
+background-color:#fbf5eb;
+font-family:Verdana, Geneva, sans-serif;	
+}
+
+#header {
+height: 200px;
+background-image:url(../images/header.gif);
+margin-top:190px;
+}
+
+#header_bottom {
+height:70px;
+background-image:url(../images/header_bottom.gif);
+}
+
+.bg {
+align:center;
+margin: 0 2%;
+z-index:1;
+}
+
+#content {
+background-color:#fff;
+width:850px; height:800px;
+align:center;
+margin: 0 20%;
+display:block;
+margin-top:-30px;
+position:absolute;
+z-index:2;
+}
+
+#content p {
+font-family:Verdana, Geneva, sans-serif;
+font-size:14px;
+}
+
+#inhalt {
+padding-top:10px; padding-left:15px; padding-right:10px; padding-bottom:15px;	
+position:top;
+}
+
+div#oben {
+margin-top:-80px;
+margin-left:-20px;
+width: 880px; height:74px;
+display:block;
+background-image:url(../images/oben.png);
+
+}
+
+div#links {
+margin-left:-50px;
+margin-top:-5px;
+width: 61px; height:800px;
+background-image:url(../images/links.png);
+background-repeat:repeat-y;
+position:absolute;
+}
+
+div#rechts {
+margin-top:-5px;
+margin-left:830px;
+width: 61px; height:800px;
+background-image:url(../images/rechts.png);
+}
+
+div#unten {
+margin-left:-40px;
+width: 910px; height:74px;
+background-image:url(../images/unten.png);
+z-index:3;
+position:absolute
+}
+
+div#unten a{
+	color: #000000;
+	position: relative;
+	right :-800px;
+}
+
+
+img#logo{
+margin: 0 20%;
+display:block;
+padding-top:30px;	
+position:absolute;
+z-index:3;
+}
+
+#menu {
+margin: 0 20%;
+margin-top:-190px;	
+}
+
+#menu ul li {
+list-style: none;
+float: left;
+padding-right:20px;
+margin-top:50px;
+}
+
+#menu ul li a {
+color:#988b78;
+text-decoration:none;
+}
+
+#menu ul  {
+margin-left:200px;
+}
+
+.bold {
+color:#a9844a;
+font-weight:bold;
+font-size:18px;
+}
+
+#submenu ul {
+list-style: none;
+float: left;
+margin-left:15px;
+margin: 0 20%;
+display:block;
+margin-top:90px;
+position:absolute;
+z-index:2;
+}
+
+#submenu ul li {
+margin-left:-180px;
+}
+
+
+#submenu .fav {
+background-image:url(../images/button1.png);
+width:160px; height:57px;	
+}
+
+#submenu .profil {
+background-image:url(../images/button2.png);
+width:159px; height:51px;	
+}
+
+#submenu .rankings {
+background-image:url(../images/button3.png);
+width:157px; height:49px;	
+}
+
+#bg1 {
+position:absolute;
+z-index:1;	
+margin: 0 20%;
+display:block;
+}
+
+.bg1 {
+margin-left:-180px;	
+}
+
+

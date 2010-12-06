@@ -1,29 +1,101 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
-  <head>
-    <title>Snups</title>
-    <%= stylesheet_link_tag 'application' %>
-    <%= javascript_include_tag :defaults %>
-    <%= csrf_meta_tag %>
-    <%= yield(:head) %>
-  </head>
-  <body>
-    <div id="container">
-      <div id="user_nav">
-        <% if user_signed_in? %>
-          Signed in as <%= current_user.email %>. Not you?
-          <%= link_to "Sign out", destroy_user_session_path %>
-        <% else %>
-          <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-        <% end %>
-      </div>
-      
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-      
-      <%= yield %>
-    </div>
-  </body>
+<!doctype html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <title>Snups</title>
+        <!--[if lte IE 8]>
+            <script src="http://js.cwhcode.com/html5/"></script>
+        <![endif]--><!-- <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" /> --><%= stylesheet_link_tag 'screen', :type => "text/css", :media => "screen" %>
+        <%= javascript_include_tag :defaults %>
+        <%= csrf_meta_tag %>
+        <%= yield(:head) %>
+    </head>
+    <body>
+        <div id="container">
+            <div id="user_nav">
+                <% if user_signed_in? %>
+                Signed in as <%= current_user.email %>. Not you?<%= link_to "Sign out", destroy_user_session_path %>
+                <% else %>
+                <%= link_to "Sign up", new_user_registration_path %>or <%= link_to "sign in", new_user_session_path %>
+                <% end %>
+            </div>
+            <div id="header">
+                <img id="logo" src="images/logo.png" />
+                <div id="menu">
+                    <ul>
+                        <li>
+                            <a href="<%= home_path() %>">
+                                <div class="bold">
+                                    Snups
+                                </div>
+                                <br/>
+                                up to the next
+                                <br/>
+                                snups-challenge
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<%= gallery_path() %>">
+                                <div class="bold">
+                                    Gallery
+                                </div>
+                                <br/>
+                                the photo gallery
+                                <br/>
+                                is a collection of
+                                <br/>
+                                the winner-images
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<%= tutorial_path() %>">
+                                <div class="bold">
+                                    Tutorial
+                                </div>
+                                <br/>
+                                how to play snups,
+                                <br/>
+                                gameinstructions
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="header_bottom">
+            </div>
+            <div id="submenu">
+                <ul>
+                    <li class="fav">
+                        <a href="fav.html"></a>
+                    </li>
+                    <li class="profil">
+                        <a href="profil.html"></a>
+                    </li>
+                    <li class="rankings">
+                        <a href="rankings.html"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bg1">
+                <img id="bg1" src="pic/bg1.png">
+            </div>
+            <div id="content">
+                <div id="inhalt">
+                    <div id="oben">
+                        <% flash.each do |name, msg| %>
+                        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+                        <% end %>
+                        <%= yield %>
+                    </div>
+                    <div id="links">
+                    </div>
+                    <div id="rechts">
+                    </div>
+                    <div id="unten">
+                        <%= link_to "About" , impressum_path() %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
