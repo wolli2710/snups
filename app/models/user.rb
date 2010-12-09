@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :image
+  has_many :comment
  # has_many :follower class user
     
   include Gravtastic

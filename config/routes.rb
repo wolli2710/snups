@@ -2,6 +2,7 @@ Snups::Application.routes.draw do
   
   devise_for :users, :path_names => { :sign_up => "register"}
   resources :images
+  resources :comments
   controller(:pages) do
     match 'home' => :home
     match 'tutorial' => :tutorial

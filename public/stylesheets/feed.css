@@ -1,0 +1,16 @@
+.foto_feed_item {
+	width: 450px;
+	border: 1px solid #000;
+	margin: 5px 0px;
+}
+
+.avatar_col {
+	width: 100px;
+	float: left;
+	text-align: center;
+}
+
+.foto_col {
+	margin-left: 100px;
+	width: 350px;
+}

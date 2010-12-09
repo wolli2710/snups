@@ -13,7 +13,7 @@ class ImagesController < ApplicationController
     #create images----------------------------------------------#
     inputPath = params[:image][:data].path()
     
-    mainPath = "D:/snups/public/images/"
+    mainPath = Rails.root.to_s + "/public/images/upload/"
     output_high = mainPath + image.nameHash + "_high.jpg"
     output_medium = mainPath + image.nameHash + "_medium.jpg"
     output_low = mainPath + image.nameHash + "_low.jpg"

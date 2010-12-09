@@ -1,4 +1,4 @@
 class Comment < ActiveRecord::Base
 	belongs_to :image
-	has_one :user
+	belongs_to :user
 end
