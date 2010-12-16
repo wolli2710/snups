@@ -1,10 +1,11 @@
 class PagesController < ApplicationController
-
-  before_filter :get_vars, :only => [:home, :gallery]
   
   def home
-    @images = Image.order("updated_at DESC").limit(10)
-    @missions = Mission.all
+
+      @images = Image.order("updated_at DESC").limit(10)
+      @missions = Mission.all
+
+
   end
   
   def tutorial
@@ -20,10 +21,5 @@ class PagesController < ApplicationController
   
   def impressum
     
-  end
-  
-  def get_vars
-    @users = User.all
-  end
-  
+  end  
 end

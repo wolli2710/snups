@@ -1,9 +1,13 @@
 <h1>Gallery</h1>
 
+<% form_tag('/images', :method => :get) do %>
+	<%= label_tag :title, Mission %>
+	<%= text_field_tag :title %>
+	
+	<%= submit_tag "Search" %>
+<% end %>
+
 
 <% @gallery_images.each do |image| %>
-
-
         <%= image_tag "upload/" + image.nameHash + "_medium.jpg" %>
-        
 <% end %>

@@ -14,7 +14,7 @@
 			<div class="comment">
 			<% image.comment.each do |comment| %>
 				<div class="comment_avatar_col">
-				<%= image_tag comment.user.gravatar_url, :size => "45x45" %>
+					<%= image_tag comment.user.gravatar_url, :size => "45x45" %>
 				</div>
 				<div class="comment_col">
 					<p><%= comment.user.name %>: </p>

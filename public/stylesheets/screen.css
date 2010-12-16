@@ -28,6 +28,7 @@
 }
 
 #main {
+	min-height: 400px;
 	margin-top: -62px;
 	width: 900px;
 	background: url(../images/content_bg.png) repeat-y 100px 0px;

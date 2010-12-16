@@ -3,11 +3,13 @@ class ImagesController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => :create 
   
   def index
-    missions = Mission.all
-    #mission_id = missions.where(:title => params[:mission])
+    if params[:title]
+    mission_id = Mission.where(:title => params[:title])
     
-    @gallery_images = Image.all
-    
+    @gallery_images = Image.where(:mission_id => mission_id)
+    else
+    @gallery_images = Image.order("updated_at DESC")
+    end
   end
   
   def create  
