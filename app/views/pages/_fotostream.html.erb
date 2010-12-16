@@ -1,22 +1,29 @@
 <% @images.each do |image| %>
 <div class="foto_stream_item">
 	<div class="foto_avatar_col float_left">
-		<a href="<%= home_path() %>">
+		<% if showAvatar %>
+		<a href="<%= profile_path() + "?id=" + image.user.id.to_s %>">
 			<%= image_tag image.user.gravatar_url %>
         </a>
+		<% end %>
 	</div>
 	<div class="foto_col float_right">
-		<%= image.user.name %><span class="float_right">Mission: "<%= image.mission.title %>"</span><br/>
+		<% if showAvatar %>
+		<a href="<%= profile_path() + "?id=" + image.user.id.to_s %>">
+			<%= image.user.name %>
+        </a>
+		<% end %>
+		<span class="float_right">Mission: "<%= image.mission.title %>"</span><br/>
         <%= image_tag "upload/" + image.nameHash + "_medium.jpg", :size => "300x200" %>
 		
 		<% image.comment.each do |comment| %>
 		<div class="comment_item">
 			<div class="comment_avatar_col float_left">
-				<%= image_tag comment.user.gravatar_url, :size => "45x45" %>
+				<a href="<%= profile_path() + "?id=" + comment.user.id.to_s %>"><%= image_tag comment.user.gravatar_url, :size => "45x45" %></a>
 			</div>
 			<div class="comment_col float_right">
 				<p>
-                    <%= comment.user.name %> wrote: 
+                    <a href="<%= profile_path() + "?id=" + comment.user.id.to_s %>"><%= comment.user.name %></a> wrote: 
                 </p>
                 <p>
                     <%= comment.body %>

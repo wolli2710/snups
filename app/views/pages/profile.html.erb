@@ -1,3 +1,6 @@
-<h1>Profile</h1>
+<h1><%= image_tag @user.gravatar_url %> Profile of <%= @user.name %></h1>
 
-<%= render 'fotostream' %>
+<br />
+<h2>Pictures taken by <%= @user.name %>:</h2>
+
+<%= render 'fotostream', { :showAvatar => false } %>

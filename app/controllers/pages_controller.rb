@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   end
   
   def profile
-    if (@user = User.find_by_id(params[:id]))
+    if (@user = User.find(params[:id]))
       @images = Image.where(:user_id => params[:id])
     else
       redirect_to home_path()
