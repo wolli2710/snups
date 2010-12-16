@@ -6,7 +6,7 @@ class MobileController < ApplicationController
     status = "ERROR"
     message = "Login failed"
         
-    if user = User.find_by_email(params[:username])
+    if user = User.find_by_name(params[:username])
       if user.valid_password?(params[:password])
         status = "SUCCESS"
         message = "Login successful"

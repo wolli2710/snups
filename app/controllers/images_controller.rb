@@ -2,6 +2,14 @@ class ImagesController < ApplicationController
   
   skip_before_filter :verify_authenticity_token, :only => :create 
   
+  def index
+    missions = Mission.all
+    #mission_id = missions.where(:title => params[:mission])
+    
+    @gallery_images = Image.all
+    
+  end
+  
   def create  
     #database---------------------------------------------------#
     image = Image.new(:user_id => params[:image][:user_id],

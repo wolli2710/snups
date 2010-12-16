@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :image
   has_many :comment
- # has_many :follower class user
+ # has_many :follower 
     
   include Gravtastic
   gravtastic
@@ -12,5 +12,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :name, :password, :password_confirmation, :remember_me
+  
+  validates :name, :length => {:minimum => 3}
+  validates_uniqueness_of :name
 end

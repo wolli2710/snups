@@ -8,20 +8,30 @@
 			</a>
 		</div>
 		<div class="foto_col">
-			<%= image.user.email %>
-			<%= image_tag "upload/" + image.nameHash + "_medium.jpg" %>
+			<%= image.user.name %><br />
+			<%= image_tag "upload/" + image.nameHash + "_medium.jpg", :size => "300x200" %>
 			
+			<div class="comment">
 			<% image.comment.each do |comment| %>
-				<p><%= image_tag comment.user.gravatar_url %><%= comment.user.email %>: <%= comment.body %></p>
+				<div class="comment_avatar_col">
+				<%= image_tag comment.user.gravatar_url, :size => "45x45" %>
+				</div>
+				<div class="comment_col">
+					<p><%= comment.user.name %>: </p>
+					<p><%= comment.body %></p>
 			<% end %>
-			<% if user_signed_in? %>
-				<% form_tag('/comments', :method => :post) do %>
-				  <%= hidden_field_tag 'user_id', current_user.id %>
-				  <%= hidden_field_tag 'image_id', image.id %>
-				  <%= text_area_tag :body %><br />
-				  <%= submit_tag "Comment" %>
-				<% end %>
+					<% if user_signed_in? %>
+						<% form_tag('/comments', :method => :post) do %>
+				  		<%= hidden_field_tag 'user_id', current_user.id %>
+				  		<%= hidden_field_tag 'image_id', image.id %>
+				  		<%= text_area_tag :body %><br />
+				  		<%= submit_tag "Comment" %>
+					<% end %>
 			<% end %>
+				</div>
+				<div class="clr"></div>
+
+			</div>
  
 			
 		</div>
