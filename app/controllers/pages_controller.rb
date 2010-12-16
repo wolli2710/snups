@@ -1,11 +1,7 @@
 class PagesController < ApplicationController
   
   def home
-
-      @images = Image.order("updated_at DESC").limit(10)
-      @missions = Mission.all
-
-
+    @images = Image.order("updated_at DESC").limit(10)
   end
   
   def tutorial
@@ -13,7 +9,8 @@ class PagesController < ApplicationController
   end
   
   def profile
-    if (@user = User.find_by_name(params[:name]))
+    if (@user = User.find_by_id(params[:id]))
+      @images = Image.where(:user_id => params[:id])
     else
       redirect_to home_path()
     end
@@ -21,5 +18,5 @@ class PagesController < ApplicationController
   
   def impressum
     
-  end  
+  end
 end

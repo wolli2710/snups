@@ -121,6 +121,10 @@ margin-top:100px;
 list-style: none;
 }
 
+#side_menue .fav, #side_menue .profil, #side_menue .rankings {
+	display: block;
+}
+
 #side_menue .fav {
 background-image:url(../images/button1.png);
 width:160px; height:57px;	
@@ -128,7 +132,7 @@ width:160px; height:57px;
 
 #side_menue .profil {
 background-image:url(../images/button2.png);
-width:159px; height:51px;	
+width:159px; height:51px;
 }
 
 #side_menue .rankings {
