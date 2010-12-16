@@ -1,0 +1,7 @@
+<% if (@offset.to_i >= 2) %>
+<a href="<%= pagination_path + "?id=" + @user.id.to_s + "&offset=" + (@offset - 2).to_s %>"><span class="float_left">Zurück</span></a>
+<% end %>
+
+<% if (@imageCount.to_i > @offset.to_i + 2) %>
+<a href="<%= pagination_path + "?id=" + @user.id.to_s + "&offset=" + (@offset + 2).to_s %>"><span class="float_right">Weiter</span></a>
+<% end %>

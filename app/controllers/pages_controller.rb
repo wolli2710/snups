@@ -1,7 +1,11 @@
 class PagesController < ApplicationController
   
+  before_filter :get_offset, :only=> [:home, :profile]
+  
   def home
-    @images = Image.order("updated_at DESC").limit(10)
+    @imageCount = Image.count
+    @user = User.new
+    @images = Image.order("updated_at DESC").limit(2).offset(@offset)
   end
   
   def tutorial
@@ -10,7 +14,8 @@ class PagesController < ApplicationController
   
   def profile
     if (@user = User.find(params[:id]))
-      @images = Image.where(:user_id => params[:id])
+      @imageCount = Image.where(:user_id => params[:id].to_i).count
+      @images = Image.order("updated_at DESC").limit(2).offset(@offset).where(:user_id => params[:id].to_i)
     else
       redirect_to home_path()
     end
@@ -18,5 +23,13 @@ class PagesController < ApplicationController
   
   def impressum
     
+  end
+  
+  protected
+  def get_offset
+    if (@offset = params[:offset].to_i)
+    else
+      @offset = 0
+    end
   end
 end

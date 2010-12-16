@@ -4,3 +4,5 @@
 <h2>Pictures taken by <%= @user.name %>:</h2>
 
 <%= render 'fotostream', { :showAvatar => false } %>
+
+<%= render 'pagination', { :pagination_path => profile_path } %>
