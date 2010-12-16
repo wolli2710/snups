@@ -34,17 +34,19 @@
             </div>
             <div id="main">
                 <div id="side_menue">
+                	<% if user_signed_in? %>
                     <ul>
-                        <li class="fav">
-                            <a href="fav.html">fav</a>
+                    	<li>
+                            <a class="profil" href="<%= profile_path() + "?id=" + current_user.id.to_s %>">My Profile</a>
                         </li>
-                        <li class="profil">
-                            <a href="profil.html">profil</a>
+                        <li>
+                            <a class="fav" href="fav.html">My Favourits</a>
                         </li>
-                        <li class="rankings">
-                            <a href="rankings.html">rankings</a>
+                        <li>
+                            <a class="rankings" href="rankings.html">???</a>
                         </li>
                     </ul>
+					<% end %>
                 </div>
                 <div id="content">
                     <% flash.each do |name, msg| %>

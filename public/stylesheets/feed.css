@@ -1,37 +1,45 @@
-.foto_feed_item {
-	width: 450px;
-	/* border: 1px solid #000; */
-	margin: 5px 0px;
-}
-
-.avatar_col {
-	width: 100px;
-	float: left;
-	text-align: center;
-}
-
-.foto_col {
-	margin-left: 100px;
-	width: 350px;
-}
-
-.comment {
-	
-}
-
-.comment_avatar_col {
-	width: 50px;
-	float: left;
-}
-
-.comment_col {
-	margin-left: 50px;
-	width: 200px;
-}
-
 #user_nav {
 	height: 15px;
 	width: 900px;
 	margin: -270px auto 0px auto;
 	text-align: right;
+}
+
+.foto_stream_item {
+	width: 400px;
+	margin-bottom: 10px;
+}
+
+.foto_avatar_col {
+	width: 100px;
+	text-align: center;
+}
+
+.foto_col {
+	width: 300px;
+}
+
+.comment_item {
+	margin-bottom: 5px;
+}
+
+.comment_avatar_col {
+	width: 50px;
+	text-align: center;
+}
+
+.comment_col {
+	width: 250px;	
+}
+
+.comment_new {
+	margin-left: 50px;
+}
+
+.float_right {
+	float: right;
+}
+
+.float_left {
+	float: left;
 }

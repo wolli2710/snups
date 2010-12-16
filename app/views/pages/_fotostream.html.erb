@@ -1,0 +1,44 @@
+<% @images.each do |image| %>
+<div class="foto_stream_item">
+	<div class="foto_avatar_col float_left">
+		<a href="<%= home_path() %>">
+			<%= image_tag image.user.gravatar_url %>
+        </a>
+	</div>
+	<div class="foto_col float_right">
+		<%= image.user.name %><span class="float_right">Mission: "<%= image.mission.title %>"</span><br/>
+        <%= image_tag "upload/" + image.nameHash + "_medium.jpg", :size => "300x200" %>
+		
+		<% image.comment.each do |comment| %>
+		<div class="comment_item">
+			<div class="comment_avatar_col float_left">
+				<%= image_tag comment.user.gravatar_url, :size => "45x45" %>
+			</div>
+			<div class="comment_col float_right">
+				<p>
+                    <%= comment.user.name %> wrote: 
+                </p>
+                <p>
+                    <%= comment.body %>
+                </p>
+			</div>
+			<div class="clr"></div>
+		</div>
+		<% end %>
+		<div class="comment_new">
+			<p>New Comment:</p>
+			<% if user_signed_in? %>
+                <% form_tag('/comments', :method => :post) do %>
+                	<%= hidden_field_tag 'user_id', current_user.id %>
+                	<%= hidden_field_tag 'image_id', image.id %>
+                	<%= text_area_tag :body %>
+                	<br/>
+                	<%= submit_tag "Comment" %>
+				<% end %>
+        	<% end %>
+		</div>
+		
+	</div>
+	<div class="clr"></div>
+</div>
+<% end %>
