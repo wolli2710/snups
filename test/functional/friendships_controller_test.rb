@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FollowingTest < ActiveSupport::TestCase
+class FriendshipsControllerTest < ActionController::TestCase
   # Replace this with your real tests.
   test "the truth" do
     assert true

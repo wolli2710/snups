@@ -4,9 +4,10 @@
 	margin: -270px auto 0px auto;
 	text-align: right;
 }
-
-.foto_stream_item {
+#foto_stream{
 	width: 400px;
+}
+.foto_stream_item {
 	margin-bottom: 10px;
 }
 
@@ -42,4 +43,17 @@
 
 .float_left {
 	float: left;
+}
+
+/*--------sidebar--------*/
+
+ #sidebar {
+ 	width: 225px;
+}
+#followers {
+	background: #f00;
+	margin-bottom: 15px;
+}
+#followed {
+	background: #f00;
 }

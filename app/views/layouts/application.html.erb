@@ -40,10 +40,10 @@
                             <a class="profil" href="<%= profile_path() + "?id=" + current_user.id.to_s %>">My Profile</a>
                         </li>
                         <li>
-                            <a class="fav" href="fav.html">My Favourits</a>
+                            <a class="fav" href="<%= favorites_path() %>">My Favourits</a>
                         </li>
                         <li>
-                            <a class="rankings" href="rankings.html">???</a>
+                            <a class="rankings" href="<%= missions_path %>/new">Suggest Mission</a>
                         </li>
                     </ul>
 					<% end %>
