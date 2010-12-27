@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   has_many :image
   has_many :comment
+  has_many :rating
 
     
   include Gravtastic

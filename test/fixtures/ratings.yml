@@ -1,11 +1,9 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  user_id: 1
-  image_id: 1
-  rating: 1
+  pos: 1
+  neg: 1
 
 two:
-  user_id: 1
-  image_id: 1
-  rating: 1
+  pos: 1
+  neg: 1

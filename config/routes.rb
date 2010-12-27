@@ -6,6 +6,10 @@ Snups::Application.routes.draw do
   resources :images
   resources :missions
   resources :comments
+  controller(:ratings) do
+    match 'ratings/up' => :up
+    match 'ratings/down' => :down
+  end
   controller(:pages) do
     match 'home' => :home
     match 'profile' => :profile

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101217105946) do
+ActiveRecord::Schema.define(:version => 20101227171702) do
 
   create_table "comments", :force => true do |t|
     t.text     "body"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(:version => 20101217105946) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "nameHash"
+    t.integer  "pos",          :default => 0
+    t.integer  "neg",          :default => 0
   end
 
   create_table "missions", :force => true do |t|
@@ -52,7 +54,6 @@ ActiveRecord::Schema.define(:version => 20101217105946) do
   create_table "ratings", :force => true do |t|
     t.integer  "user_id"
     t.integer  "image_id"
-    t.integer  "rating"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
