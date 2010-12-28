@@ -1,65 +1,77 @@
 <!DOCTYPE html>
 <html lang="en-us">
-    <head>
-        <meta charset="utf-8">
-        <title>Snups</title>
-        <!--[if lte IE 8]>
-            <script src="http://js.cwhcode.com/html5/"></script>
-        <![endif]--><%= stylesheet_link_tag 'screen', :type => "text/css", :media => "screen" %>
-        <%= stylesheet_link_tag 'feed', :type => "text/css", :media => "screen" %>
-        <%= javascript_include_tag :defaults %>
-        <%= csrf_meta_tag %>
-        <%= yield(:head) %>
-    </head>
-    <body>
-        <div id="top_bg"></div>
-        <div id="top_strip"></div>
-        <div id="user_nav">
-            <% if user_signed_in? %>
-            Signed in as <%= current_user.name %>. Not you? <%= link_to "Sign out", destroy_user_session_path %>
-            <% else %>
-            <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
-            <% end %>
-        </div>
-        <div id="wrapper">
-            <div id="top_nav">
-                <img id="logo" src="images/logo.png">
-                <div id="menu">
-                    <ul>
-            			<li><a href="<%= home_path() %>"><div class="bold">Snups</div><br/>up to the next<br/>snups-challenge</a></li>
-                		<li><a href="<%= images_path() %>"><div class="bold">Gallery</div><br/>the photo gallery<br/> is a collection of<br/>the winner-images</a></li>
-                		<li><a href="<%= tutorial_path() %>"><div class="bold">Tutorial</div><br/>how to play snups,<br/>gameinstructions</a></li>
-            		</ul>
-                </div>
-            </div>
-            <div id="main">
-                <div id="side_menue">
-                	<% if user_signed_in? %>
-                    <ul>
-                    	<li>
-                            <a class="profil" href="<%= profile_path() + "?id=" + current_user.id.to_s %>">My Profile</a>
-                        </li>
-                        <li>
-                            <a class="fav" href="<%= favorites_path() %>">My Favourits</a>
-                        </li>
-                        <li>
-                            <a class="rankings" href="<%= missions_path %>/new">Suggest Mission</a>
-                        </li>
-                    </ul>
-					<% end %>
-                </div>
-                <div id="content">
-                    <% flash.each do |name, msg| %>
-                    <%= content_tag :div, msg, :id => "flash_#{name}" %>
-                    <% end %>
-                    <%= yield %>
-                </div>
-            </div>
-            <div id="unten">
-            </div>
-        </div>
-        <div id="footer">
-            <%= link_to "About" , impressum_path() %>
-        </div>
-    </body>
+<head>
+<meta charset="utf-8">
+<title>Snups</title>
+<!--[if lte IE 8]>
+    <script src="http://js.cwhcode.com/html5/"></script>
+<![endif]--><%= stylesheet_link_tag 'screen', :type => "text/css", :media => "screen" %>
+<%= stylesheet_link_tag 'feed', :type => "text/css", :media => "screen" %>
+<%= javascript_include_tag :defaults %>
+<%= csrf_meta_tag %>
+<%= yield(:head) %>
+</head>
+
+<body>
+<div id="top_bg"> </div>
+<div id="top_strip"></div>
+<div id="user_nav">
+    <% if user_signed_in? %>
+    Signed in as <%= current_user.name %>. Not you? <%= link_to "Sign out", destroy_user_session_path %>
+    <% else %>
+    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+    <% end %>
+</div>
+<div id="wrapper">
+  <div id="top_nav"> <a  href="<%= home_path() %>"><img id="logo" src="/images/logo.png"></a>
+    <div id="menu">
+      <ul>
+        <li><a href="<%= home_path() %>"><span class="bold">Snups</span><span class="description">up to the next<br/>
+          snups-challenge</a></span></li>
+        <li><a href="<%= images_path() %>"><span class="bold">Gallery</span><span class="description">the photo gallery<br/>
+          is a collection of<br/>
+          the winner-images</a></span></li>
+        <li><a href="<%= tutorial_path() %>"><span class="bold">Tutorial</span><span class="description">how to play snups,<br/>
+          gameinstructions</a></span></li>
+      </ul>
+    </div>
+  </div>
+  <div id="main">
+    <div id="side_menue">
+    <% if user_signed_in? %>
+      <ul>
+        <li class="nav1"><a href="<%= profile_path() + "?id=" + current_user.id.to_s %>">My Profile</a></li>
+		<li class="nav2"><a href="<%= favorites_path() %>">My Favorites</a></li>
+        <li class="nav3"><a href="<%= missions_path %>/new">New Mission</a></li>
+      </ul>
+	<% else %>
+	  <ul>
+        <li class="nav1"><a href="<%= new_user_session_path %>">Login</a></li>
+		<li class="nav2"><a href="<%= new_user_registration_path %>">Register</a></li>
+        <li class="nav3"><a href="<%= tutorial_path() %>">Tutorial</a></li>
+      </ul>
+	<% end %>
+    </div>
+    <div id="content">
+    <div class="inhalt">
+    <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    <% end %>
+    <%= yield %>
+    </div>
+    <!--/inhalt--> 
+    
+  </div>
+  <!--/content--> 
+  
+</div>
+<!--/main-->
+
+<div id="unten">
+	<span id="info"><a href="about.html">about</a> - <a href="contact.html">contact</a> - <a href="notice.html">legacy notice</a></span></div>
+</div>
+<!--/wrapper-->
+
+<div id="footer"></div>
+</body>
 </html>

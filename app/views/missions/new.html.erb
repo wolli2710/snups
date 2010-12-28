@@ -1,4 +1,14 @@
+<div id="sidebar" class="float_right">
+	<div id="current_oben"></div>
+	<div id="current_content">
+		<%= image_tag @random_image, :size => "220x220" %>
+		<div class="gallery"><a href="<%= images_path() %>">...go to Gallery</a></div>
+	</div>
+	<div id="current_unten"></div>
+</div>
+
 <h1>Suggest New Mission</h1>
+<p>Here you can suggest new missions which are displayed on the mobile devices.</p>
 
 <%= form_for(@mission) do |f| %>
 

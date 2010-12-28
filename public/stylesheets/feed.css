@@ -9,6 +9,7 @@
 }
 .foto_stream_item {
 	margin-bottom: 10px;
+	float: left;
 }
 
 .foto_avatar_col {
@@ -45,6 +46,35 @@
 	float: left;
 }
 
+#pagination {
+	width: 390px;
+	background:#e5dccf;
+	text-align: center;
+	padding: 2px 5px;
+}
+
+#flash_alert, #flash_notice, #error_explanation {
+	padding: 2px;
+	margin: 1px;
+}
+
+#error_explanation li {
+	list-style: none;
+	color: #000000;
+	padding-left: 10px;
+}
+
+#error_explanation h2 {
+	display: none;
+}
+
+#flash_alert, #error_explanation {
+	background: #be4646;
+}
+
+#flash_notice {
+	background: #87be46;
+}
 /*--------sidebar--------*/
 
  #sidebar {

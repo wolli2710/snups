@@ -7,11 +7,12 @@ class RatingsController < ApplicationController
     if rating.save
       image = Image.find(params[:image_id])
       image.pos = image.pos + 1
-      image.save
+      if image.save
+        flash[:notice] = "Thank you for voting this Image!"
+      end
     else
-       flash[:notice] = "Sie haben bereits gevotet!"
+       flash[:alert] = "You already voted this Image!"
     end
-    
     redirect_to :back
   end
   
@@ -21,9 +22,11 @@ class RatingsController < ApplicationController
     if rating.save
       image = Image.find(params[:image_id])
       image.neg = image.neg + 1
-      image.save
+      if image.save
+        flash[:notice] = "Thank you for voting this Image!"
+      end
     else
-       flash[:notice] = "Sie haben bereits gevotet!"
+       flash[:alert] = "You already voted this Image!"
     end
     redirect_to :back
   end

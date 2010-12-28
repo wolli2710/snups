@@ -1,4 +1,13 @@
-<h1>Home</h1>
+<div id="sidebar" class="float_right">
+	<div id="current_oben"></div>
+	<div id="current_content">
+		<%= image_tag @random_image, :size => "220x220" %>
+		<div class="gallery"><a href="<%= images_path() %>">...go to Gallery</a></div>
+	</div>
+	<div id="current_unten"></div>
+</div>
+
+<h1>Snups - Home</h1>
 
 <%= render 'fotostream', { :showAvatar => true } %>
 

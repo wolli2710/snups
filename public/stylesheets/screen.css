@@ -4,51 +4,57 @@
 	padding:0px;
 }
 
+body {
+	background-color:#f9f0e1;
+}
+
 #top_bg {
 	height: 200px;
-	background: url(../images/header.gif) repeat-x;
+	background: url(/images/header.gif) repeat-x;
 }
 
 #top_strip {
 	height: 70px;
-	background: url(../images/header1.gif) repeat-x;
+	background: url(/images/header1.gif) repeat-x;
 }
 
 #wrapper {
 	margin: -15px auto 0px auto;
-	width: 900px;
-	background: url(../images/bg.png) no-repeat 0px 270px;
+	width: 950px;
+	background: url(/images/bg.png) no-repeat 0px 270px;
 }
 
 #top_nav {
 	height: 270px;
 	width: 900px;
-	background: url(../images/oben.png) no-repeat 100px 150px;
+	background: url(/images/oben.png) no-repeat 100px 150px;
 	overflow: hidden;
 }
 
 #main {
-	min-height: 400px;
 	margin-top: -62px;
-	width: 900px;
-	background: url(../images/content_bg.png) repeat-y 100px 0px;
+	width: 950px;
+	background: url(/images/content_bg.png) repeat-y 100px 0px;
 	float: right;
 }
 
 #side_menue {
-	width: 100px;
+	width: 160px;
 	float: left;
-	margin-left:-40px;
-	position:absolute;
+	margin-left:-50px;
+	position:relative;
 	z-index:1;
+	margin-top:100px;
 }
 
 #content {
 	margin-left: 100px;
 	padding: 0px 25px 0px 25px;
 	width: 650px;
-	
-	
+	position:relative;
+	z-index:100;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+	min-height: 600px;
 }
 
 .clr {
@@ -58,21 +64,30 @@
 #unten {
 	height: 70px;
 	width: 900px;
-	background: url(../images/unten.png) no-repeat 100px 0px;
+	background: url(/images/unten.png) no-repeat 100px 0px;
 	overflow: hidden;
+}
+
+.description {
+	margin-top:20px;
+	display: block;
 }
 
 #footer {
 	margin-top:-10px;
 	height:100px;
     clear:left;
-    background:#efefef repeat-x;
+    background:#797268 repeat-x;
     text-align:center;
+	position:relative;
+	z-index:-1;
+	margin-top: -65px;
 }
 
 img#logo{
 	height:151px; width:150px;
 	margin-left:100px; margin-top:15px;
+	border:none;
 }
 
 #menu {
@@ -109,33 +124,111 @@ img#logo{
 
 .bold {
 	color:#a9844a;
-	font-weight:bold;
-	font-size:18px;
-}
-
-#side_menue {
-margin-top:100px;
+	font-size:20px;
+	font-family: 'ArmWrestlerBold', "Comic Sans MS", cursive;
+	font-variant:small-caps;
 }
 
 #side_menue ul {
-list-style: none;
+	list-style: none;
 }
 
-#side_menue .fav, #side_menue .profil, #side_menue .rankings {
+#side_menue .nav2 {
+	width:160px; height:52px;	
+}
+
+#side_menue .nav1 {
+	width:159px; height:51px;
+}
+
+#side_menue .nav3 {
+	width:157px; height:49px;	
+}
+
+#side_menue .nav3 a {
+	padding-top:20px;	
+}
+
+#side_menue ul li a {
+	font-family: 'JournalRegular', "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	margin-left:68px; 
+	font-size:24px;
+	text-decoration:none;
+}
+
+h1, h2, h3 {
+	color:#998260;
+}
+
+@font-face {
+	font-family: 'ArmWrestlerBold';
+	src: url(/fonts/ArmWrestler-webfont.eot);
+	src: local('☺'), url(/fonts/ArmWrestler-webfont.woff) format('woff'), url(/fonts/ArmWrestler-webfont.ttf) format('truetype'), url(/fonts/ArmWrestler-webfont.svg#webfontHOcaXZGA) format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'JournalRegular';
+	src: url(/fonts/journal-webfont.eot);
+	src: local('☺'), url(/fonts/journal-webfont.woff) format('woff'), url(/fonts/journal-webfont.ttf) format('truetype'), url(/fonts/journal-webfont.svg#webfont3lGqYzYA) format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+#current_pic {
+	width:230px;
+	float:right;
+}
+
+.inhalt {
+	margin-top:20px;
+	font-size:12px;
+}
+
+#current_oben{
+	width:230px; height:76px;
+	background-image:url(/images/current_oben.png);
+}
+
+#current_unten{
+	width:230px; height:76px;
+	background-image:url(/images/current_unten.png);
+}
+
+#current {
+	width:230px; height:220px;
+	border:#666;
+}
+
+#current_content{
+	width:220px;
+	background: url(/images/current_content.png) repeat-y;
+	padding:5px;
+}
+
+.gallery a {
+	font-family: 'JournalRegular', "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	margin-top:9px;
+	font-size:28px;
+	margin-left:100px;
+	text-decoration:none;
+}
+
+#info {
+	text-align: center;
+	width: 900px;
 	display: block;
 }
 
-#side_menue .fav {
-background-image:url(../images/button1.png);
-width:160px; height:57px;	
+#info a {
+	font-size:11px;
 }
 
-#side_menue .profil {
-background-image:url(../images/button2.png);
-width:159px; height:51px;
+a {
+	color:#998260;
 }
 
-#side_menue .rankings {
-background-image:url(../images/button3.png);
-width:157px; height:49px;	
+a:hover {
+	color:#473e30;
 }
