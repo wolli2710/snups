@@ -6,7 +6,6 @@ class PagesController < ApplicationController
     @imageCount = Image.count
     @user = User.new
     @images = Image.order("created_at DESC").limit(2).offset(@offset)
-    @random_image = "upload/" + Image.all[rand(Image.all.size)].nameHash + "_medium.jpg"
   end
   
   def tutorial

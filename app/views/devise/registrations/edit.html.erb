@@ -1,7 +1,20 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div id="sidebar" class="float_right">
+	<div id="current_oben"></div>
+	<div id="current_content">
+		<%= image_tag @random_image, :size => "220x220" %>
+		<div class="gallery"><a href="<%= images_path() %>">...go to Gallery</a></div>
+	</div>
+	<div id="current_unten"></div>
+</div>
 
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<br />
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
+  
+  <p><%= f.label :about %><br />
+  <i>(write something about yourself)</i><br />
+  <%= f.text_area(:about, :size => '40x4') %></p>
 
   <p><%= f.label :email %><br />
   <%= f.text_field :email %></p>
@@ -12,14 +25,16 @@
   <p><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></p>
 
-  <p><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <p><%= f.label :current_password %><br />
+  <i>(we need your current password to confirm your changes)</i><br />
   <%= f.password_field :current_password %></p>
 
   <p><%= f.submit "Update" %></p>
 <% end %>
-
+<br />
+<br />
 <h3>Cancel my account</h3>
-
+<br />
 <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), :confirm => "Are you sure?", :method => :delete %>.</p>
-
+<br />
 <%= link_to "Back", :back %>
