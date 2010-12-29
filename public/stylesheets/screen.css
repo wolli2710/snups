@@ -202,9 +202,14 @@ h1, h2, h3 {
 }
 
 #current_content{
-	width:220px;
+	width:230px;
 	background: url(/images/current_content.png) repeat-y;
-	padding:5px;
+}
+
+#current_image {
+	width:220px;
+	margin: 0px 5px 0px 5px;
+	overflow: hidden;
 }
 
 .gallery a {

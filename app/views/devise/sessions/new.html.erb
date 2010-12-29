@@ -1,10 +1,5 @@
 <div id="sidebar" class="float_right">
-	<div id="current_oben"></div>
-	<div id="current_content">
-		<%= image_tag @random_image, :size => "220x220" %>
-		<div class="gallery"><a href="<%= images_path() %>">...go to Gallery</a></div>
-	</div>
-	<div id="current_unten"></div>
+	<%= render 'layouts/current_image' %>
 </div>
 
 <h2>Sign in</h2>
