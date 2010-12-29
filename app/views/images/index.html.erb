@@ -9,5 +9,7 @@
 
 
 <% @gallery_images.each do |image| %>
+	<a href="/images/upload/<%= image.nameHash %>_high.jpg" class="lightbox">
         <%= image_tag "upload/" + image.nameHash + "_medium.jpg" %>
+	</a>
 <% end %>
