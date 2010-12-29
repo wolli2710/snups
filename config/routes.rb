@@ -18,6 +18,9 @@ Snups::Application.routes.draw do
     match 'gallery' => :gallery
     match 'favorites' => :favorites
   end
+    controller(:admins) do
+    match 'admin/' => :index
+  end
   
   match 'mobile/login', :to => "mobile#login", :via => :post
 

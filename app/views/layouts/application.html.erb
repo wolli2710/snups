@@ -77,7 +77,7 @@
 <!--/main-->
 
 <div id="unten">
-	<span id="info"><a href="about.html">about</a> - <a href="contact.html">contact</a> - <a href="notice.html">legacy notice</a></span></div>
+	<span id="info"><a href="about.html">about</a> - <a href="contact.html">contact</a> - <a href="notice.html">legacy notice</a><% if current_user.admin? %> - <a href="<%= admin_path %>">Administration</a><% end %></span></div>
 </div>
 <!--/wrapper-->
 
