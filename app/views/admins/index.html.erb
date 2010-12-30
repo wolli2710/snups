@@ -1,3 +1,17 @@
 <%= render 'layouts/admin_menue' %>
 
 <h2>Admins</h2>
+
+<br />
+
+<% @admins.each do |admin| %>
+<p><%= admin.name %> </p>
+<% end %>
+
+<br />
+<p>Add new Admin</p>
+<% form_tag(admins_path, :method => :post) do %>
+	<%= label_tag "Name" %>
+	<%= text_field_tag :name %>
+	<%= submit_tag "Add Admin" %>
+<% end %>

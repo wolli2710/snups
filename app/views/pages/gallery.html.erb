@@ -1,6 +1,6 @@
 <h1>Gallery</h1>
 
-<% form_tag('/images', :method => :get) do %>
+<% form_tag(gallery_path, :method => :get) do %>
 	<%= label_tag :title, Mission %>
 	<%= text_field_tag :title %>
 	
