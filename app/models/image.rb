@@ -4,6 +4,7 @@ class Image < ActiveRecord::Base
    
 	has_many :comment
 	has_many :rating
+  has_many :report
 	belongs_to :mission
 	belongs_to :user
   

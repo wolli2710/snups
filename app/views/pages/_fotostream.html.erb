@@ -23,6 +23,7 @@
 		<div class="float_right">
 			<%= image.pos %> <%= link_to image_tag("thump_up.png", :border=>0), :controller => "ratings", :action => "up", :image_id => image.id, :user_id => current_user.id %> 
 			<%= image.neg %> <%= link_to image_tag("thump_down.png", :border=>0), :controller => "ratings", :action => "down", :image_id => image.id, :user_id => current_user.id %>
+			<%= link_to image_tag("report.png", :border=>0), :controller => "reports", :action => "image", :image_id => image.id, :user_id => current_user.id %>
 		</div>
 		<% end %>
 		<% image.comment.each do |comment| %>
@@ -32,7 +33,10 @@
 			</div>
 			<div class="comment_col float_right">
 				<p>
-                    <a href="<%= profile_path() + "?id=" + comment.user.id.to_s %>"><%= comment.user.name %></a> wrote: 
+                    <a href="<%= profile_path() + "?id=" + comment.user.id.to_s %>"><%= comment.user.name %></a> wrote:
+					<% if user_signed_in? %>
+					<span class="float_right"><%= link_to image_tag("report.png", :border=>0), :controller => "reports", :action => "comment", :comment_id => comment.id, :user_id => current_user.id %></span>
+					<% end %>
                 </p>
                 <p>
                     <%= comment.body %>
