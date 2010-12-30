@@ -37,7 +37,7 @@
       <ul>
         <li><a href="<%= home_path() %>"><span class="bold">Snups</span><span class="description">up to the next<br/>
           snups-challenge</a></span></li>
-        <li><a href="<%= images_path() %>"><span class="bold">Gallery</span><span class="description">the photo gallery<br/>
+        <li><a href="<%= gallery_path() %>"><span class="bold">Gallery</span><span class="description">the photo gallery<br/>
           is a collection of<br/>
           the winner-images</a></span></li>
         <li><a href="<%= tutorial_path() %>"><span class="bold">Tutorial</span><span class="description">how to play snups,<br/>
@@ -77,7 +77,7 @@
 <!--/main-->
 
 <div id="unten">
-	<span id="info"><a href="about.html">about</a> - <a href="contact.html">contact</a> - <a href="notice.html">legacy notice</a><% if current_user.admin? %> - <a href="<%= admin_path %>">Administration</a><% end %></span></div>
+	<span id="info"><a href="about.html">about</a> - <a href="contact.html">contact</a> - <a href="notice.html">legacy notice</a><% if user_signed_in? %><% if current_user.admin? %> - <a href="<%= admins_path %>">Administration</a><% end %><% end %></span></div>
 </div>
 <!--/wrapper-->
 

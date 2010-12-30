@@ -3,6 +3,7 @@ Snups::Application.routes.draw do
   resources :friendships
 
   devise_for :users, :path_names => { :sign_up => "register"}
+  resources :admins
   resources :images
   resources :missions
   resources :comments
@@ -15,11 +16,8 @@ Snups::Application.routes.draw do
     match 'profile' => :profile
     match 'tutorial' => :tutorial
     match 'impressum' => :impressum
-    match 'gallery' => :gallery
     match 'favorites' => :favorites
-  end
-    controller(:admins) do
-    match 'admin/' => :index
+    match 'gallery' => :gallery
   end
   
   match 'mobile/login', :to => "mobile#login", :via => :post

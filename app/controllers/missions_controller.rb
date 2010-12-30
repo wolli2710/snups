@@ -1,5 +1,10 @@
 class MissionsController < ApplicationController
   
+  before_filter :check_admin, :only=> [:index]
+  
+  def index
+    
+  end
   
   def new
     @mission = Mission.new

@@ -1,15 +1,10 @@
 class ImagesController < ApplicationController
   
   skip_before_filter :verify_authenticity_token, :only => :create 
+  before_filter :check_admin, :only=> [:index]
   
   def index
-    if params[:title]
-    mission_id = Mission.where(:title => params[:title])
     
-    @gallery_images = Image.where(:mission_id => mission_id)
-    else
-    @gallery_images = Image.order("updated_at DESC")
-    end
   end
   
   def create  

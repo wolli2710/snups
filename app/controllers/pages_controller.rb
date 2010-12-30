@@ -42,6 +42,16 @@ class PagesController < ApplicationController
     
   end
   
+  def gallery
+    if params[:title]
+    mission_id = Mission.where(:title => params[:title])
+    
+    @gallery_images = Image.where(:mission_id => mission_id)
+    else
+    @gallery_images = Image.order("updated_at DESC")
+    end
+  end
+  
   protected
   def get_offset
     if (@offset = params[:offset].to_i)

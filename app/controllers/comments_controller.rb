@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
   
-  def new
+  before_filter :check_admin, :only=> [:index]
+  
+  def index
     
   end
   
