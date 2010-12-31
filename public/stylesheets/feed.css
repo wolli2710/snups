@@ -7,6 +7,16 @@
 #foto_stream{
 	width: 400px;
 }
+
+a.tag_cloud {
+	color:#04AA02
+}
+
+.gallery_images{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
 .foto_stream_item {
 	margin-bottom: 10px;
 	float: left;

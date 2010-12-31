@@ -43,6 +43,10 @@ class PagesController < ApplicationController
   end
   
   def gallery
+    @image_mission_id = Image.find_by_sql(" SELECT distinct mission_id FROM 'images' ") 
+    @image_count = Image.all
+
+    
     if params[:title]
     mission_id = Mission.where(:title => params[:title])
     
