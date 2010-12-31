@@ -1,6 +1,7 @@
 <h1>Gallery</h1>
 
 
+
 <% @image_mission_id.each do |image_mission| %>
 	<% counter = 15 %>
 	<% @image_count.each do |i| %>
@@ -12,6 +13,7 @@
 	<% end %>
 		<%= link_to image_mission.mission.title, gallery_path() + '?title=' + image_mission.mission.title, 
 		:style => "font-size:" + counter.to_s + "px", :class => "tag_cloud" %>
+
 <% end %>
 
 <br/>
