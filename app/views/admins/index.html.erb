@@ -4,13 +4,13 @@
 
 <br />
 
-<% @admins.each do |admin| %>
-<p><%= admin.name %> </p>
+<% @users.each do |user| %>
+<p><%= link_to "remove", :controller => "admins", :action => :degrade, :user_id => user.id %> <%= user.name %> </p>
 <% end %>
 
 <br />
 <p>Add new Admin</p>
-<% form_tag(admins_path, :method => :post) do %>
+<% form_tag(:controller => "admins", :action => "upgrade", :method => :post) do %>
 	<%= label_tag "Name" %>
 	<%= text_field_tag :name %>
 	<%= submit_tag "Add Admin" %>

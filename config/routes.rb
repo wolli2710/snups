@@ -1,12 +1,17 @@
 Snups::Application.routes.draw do
   
   resources :friendships
-
   devise_for :users, :path_names => { :sign_up => "register"}
-  resources :admins
   resources :images
   resources :missions
   resources :comments
+  
+  controller(:admins) do
+    match 'admins' => :index
+    match 'admins/upgrade' => :upgrade
+    match 'admins/degrade' => :degrade
+  end
+  
   controller(:ratings) do
     match 'ratings/up' => :up
     match 'ratings/down' => :down
