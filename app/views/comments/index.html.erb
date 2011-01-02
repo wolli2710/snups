@@ -1,3 +1,15 @@
 <%= render 'layouts/admin_menue' %>
 
 <h2>Comments</h2>
+
+<br>
+<h3>All Reported Comments:</h3>
+<br>
+<p><i>click to delete Reported Comment:</i></p>
+<br>
+<p>
+<% @comments.each do |comment| %>
+<%= link_to(comment.user.name + " wrote  => " + comment.body   , comment_path(comment), :method => :delete, :confirm => "Are you sure?") %>
+<%= " reported: " + comment.report_count.to_s + " times" %><br>
+<% end %>
+</p>
