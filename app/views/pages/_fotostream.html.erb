@@ -17,7 +17,7 @@
 			<span class="float_right">Mission: "<%= image.mission.title %>"</span>
 		</p>
 		<a href="/images/upload/<%= image.nameHash %>_high.jpg" class="lightbox">
-        	<%= image_tag "upload/" + image.nameHash + "_medium.jpg", :size => "300x200" %>
+        	<%= image_tag "upload/" + image.nameHash + "_medium.jpg" %>
 		</a>
 		<% if user_signed_in? %>
 		<div class="float_right">

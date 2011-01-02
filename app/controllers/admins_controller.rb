@@ -6,7 +6,7 @@ class AdminsController < ApplicationController
     @users = User.where(:admin => true)
   end
   
-  def upgrade
+  def create
     if user = User.find(:first, :conditions => [ "name = ?", params[:name]])
       
       unless user.admin
@@ -27,8 +27,8 @@ class AdminsController < ApplicationController
     redirect_to :back
   end
   
-  def degrade
-    if user = User.find(:first, :conditions => [ "id = ?", params[:user_id]])
+  def destroy
+    if user = User.find(:first, :conditions => [ "id = ?", params[:id]])
       
       unless user == current_user
         user.admin = false

@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
   
   skip_before_filter :verify_authenticity_token, :only => :create 
-  before_filter :check_admin, :only=> [:index]
+  before_filter :check_admin, :only=> [:index, :destroy]
   
   def index
     
@@ -23,17 +23,55 @@ class ImagesController < ApplicationController
     output_medium = mainPath + image.nameHash + "_medium.jpg"
     output_low = mainPath + image.nameHash + "_low.jpg"
     
-    imageName = MiniMagick::Image.open(inputPath)
+    uploadedImage = MiniMagick::Image.open(inputPath)
     
-    imageName.write  output_high
+    uploadedImage.write  output_high
     
-    imageName.resize "300x200"
-    imageName.write output_medium
+    uploadedImage = resize_and_crop_banner(uploadedImage, 300, 150)
+    uploadedImage.write output_medium
     
-    imageName.resize "100x65"
-    imageName.write output_low
+    uploadedImage = resize_and_crop(uploadedImage, 100)
+    uploadedImage.write output_low
     
     #store to database-----------------------------------------#
     image.save()
+  end
+  
+  def destroy
+    if image = Image.find(:first, :conditions => [ "id = ?", params[:id]])
+      
+      require 'fileutils' 
+      FileUtils.rm_rf Dir[ "#{RAILS_ROOT}/public/images/upload/#{image.nameHash}*" ] 
+      
+      image.destroy      
+    end
+  end
+  
+  protected    
+  def resize_and_crop(image, size)
+    if image[:width] < image[:height]
+      shave_off = ((
+        image[:height]-
+        image[:width])/2).round
+        image.shave("0x#{shave_off}")
+    elsif image[:width] > image[:height]
+      shave_off = ((
+        image[:width]-
+        image[:height])/2).round
+        image.shave("#{shave_off}x0")
+    end
+    image.resize size
+    return image
+  end
+  
+  def resize_and_crop_banner(image, w, h)
+    size = w.to_s + "x" + h.to_s
+    
+    image = resize_and_crop(image, w)
+    
+    shave_h = ((image[:height]- h)/2).round
+    image.shave("0x#{shave_h}")
+
+    return image
   end
 end

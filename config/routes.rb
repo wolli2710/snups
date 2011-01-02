@@ -5,12 +5,7 @@ Snups::Application.routes.draw do
   resources :images
   resources :missions
   resources :comments
-  
-  controller(:admins) do
-    match 'admins' => :index
-    match 'admins/upgrade' => :upgrade
-    match 'admins/degrade' => :degrade
-  end
+  resources :admins
   
   controller(:ratings) do
     match 'ratings/up' => :up
