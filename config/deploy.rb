@@ -26,5 +26,7 @@ namespace :deploy do
 end
 
 require "bundler/capistrano"
+set :bundle_flags,       "--quiet"
+
 
 after "deploy:update_code", "deploy:copy_config"
