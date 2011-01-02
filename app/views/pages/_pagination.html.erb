@@ -1,10 +1,10 @@
 
-<div id="pagination" class="float_left">Page <%= @offset/2 +1 %>
-<% if (@offset.to_i >= 2) %>
-<a href="<%= pagination_path + "?id=" + @user.id.to_s + "&offset=" + (@offset - 2).to_s %>"><span class="float_left">Back</span></a>
+<div id="pagination" class="float_left">Page <%= @offset/5 +1 %>
+<% if (@offset.to_i >= 5) %>
+<a href="<%= pagination_path + "?id=" + @user.id.to_s + "&offset=" + (@offset - 5).to_s %>"><span class="float_left">Back</span></a>
 <% end %>
 
-<% if (@imageCount.to_i > @offset.to_i + 2) %>
-<a href="<%= pagination_path + "?id=" + @user.id.to_s + "&offset=" + (@offset + 2).to_s %>"><span class="float_right">Forward</span></a>
+<% if (@imageCount.to_i > @offset.to_i + 5) %>
+<a href="<%= pagination_path + "?id=" + @user.id.to_s + "&offset=" + (@offset + 5).to_s %>"><span class="float_right">Forward</span></a>
 <% end %>
 </div>

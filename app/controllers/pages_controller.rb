@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   def home
     @imageCount = Image.count
     @user = User.new
-    @images = Image.order("created_at DESC").limit(2).offset(@offset)
+    @images = Image.order("created_at DESC").limit(5).offset(@offset)
   end
   
   def tutorial
@@ -16,7 +16,7 @@ class PagesController < ApplicationController
     
     if @user = User.find(:first, :conditions => [ "id = ?", params[:id]])
       @imageCount = Image.where(:user_id => params[:id].to_i).count
-      @images = Image.order("created_at DESC").limit(2).offset(@offset).where(:user_id => params[:id].to_i)
+      @images = Image.order("created_at DESC").limit(5).offset(@offset).where(:user_id => params[:id].to_i)
       if (current_user)  
         if (Friendship.where(:user_id => current_user.id, :friend_id => @user.id ).count > 0)
           @is_following = true
@@ -33,7 +33,7 @@ class PagesController < ApplicationController
     @user = current_user;
 
     @friend_ids = Friendship.where(:user_id => current_user.id).find(:all, :select => 'friend_id').map(&:friend_id)
-    @images = Image.where(:user_id => @friend_ids).order("created_at DESC").limit(2).offset(@offset)
+    @images = Image.where(:user_id => @friend_ids).order("created_at DESC").limit(5).offset(@offset)
     @imageCount = Image.where(:user_id => @friend_ids).count
   end
   

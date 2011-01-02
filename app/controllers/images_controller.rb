@@ -4,7 +4,7 @@ class ImagesController < ApplicationController
   before_filter :check_admin, :only=> [:index, :destroy]
   
   def index
-    
+    @reported_images = Image.order("report_count DESC").find(:all, :conditions => "report_count > 0")
   end
   
   def create  
@@ -37,15 +37,35 @@ class ImagesController < ApplicationController
     image.save()
   end
    
-  def delete
+  def destroy
     if image = Image.find(:first, :conditions => [ "id = ?", params[:id]])
       
       File.delete("#{RAILS_ROOT}/public/images/upload/#{image.nameHash}_high.jpg")
       File.delete("#{RAILS_ROOT}/public/images/upload/#{image.nameHash}_medium.jpg")
       File.delete("#{RAILS_ROOT}/public/images/upload/#{image.nameHash}_low.jpg")
       
-      image.destroy      
+      for comment in Comment.where(:image_id => image.id)
+        for report in Report.where(:comment_id => comment.id)
+          report.destroy
+        end
+        comment.destroy
+      end
+      
+      for rating in Rating.where(:image_id => image.id)
+        rating.destroy
+      end
+      
+      for report in Report.where(:image_id => image.id)
+        report.destroy
+      end
+    
+      if image.destroy
+        flash[:notice] = "Image deleted!"
+      else
+        flash[:alert] = "Image could not be deleted"
+      end
     end
+    redirect_to :back
   end
   
   protected

@@ -32,20 +32,20 @@ class MissionsController < ApplicationController
         
         for comment in Comment.where(:image_id => image.id)
           for report in Report.where(:comment_id => comment.id)
-            report.delete
+            report.destroy
           end
-          comment.delete
+          comment.destroy
         end
         
         for rating in Rating.where(:image_id => image.id)
-          rating.delete
+          rating.destroy
         end
         
         for report in Report.where(:image_id => image.id)
-          report.delete
+          report.destroy
         end
       
-        image.delete
+        image.destroy
       end
       
       if mission.destroy
