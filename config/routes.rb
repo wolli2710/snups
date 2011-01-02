@@ -27,6 +27,8 @@ Snups::Application.routes.draw do
     match 'impressum' => :impressum
     match 'favorites' => :favorites
     match 'gallery' => :gallery
+    match 'notice' => :notice
+    match 'about' => :about
   end
   
   match 'mobile/login', :to => "mobile#login", :via => :post
