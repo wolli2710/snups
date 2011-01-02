@@ -26,14 +26,33 @@ class MissionsController < ApplicationController
     if mission = Mission.find(:first, :conditions => [ "id = ?", params[:id]])
       
       for image in Image.where(:mission_id => params[:id])
-          image.destroy
+        File.delete("#{RAILS_ROOT}/public/images/upload/#{image.nameHash}_high.jpg")
+        File.delete("#{RAILS_ROOT}/public/images/upload/#{image.nameHash}_medium.jpg")
+        File.delete("#{RAILS_ROOT}/public/images/upload/#{image.nameHash}_low.jpg")
+        
+        for comment in Comment.where(:image_id => image.id)
+          for report in Report.where(:comment_id => comment.id)
+            report.delete
+          end
+          comment.delete
+        end
+        
+        for rating in Rating.where(:image_id => image.id)
+          rating.delete
+        end
+        
+        for report in Report.where(:image_id => image.id)
+          report.delete
+        end
+      
+        image.delete
       end
       
-      #if mission.destroy
-      #  flash[:notice] = "Mission deleted!"
-      #else
-      #  flash[:alert] = "Mission could not be deleted"
-      #end
+      if mission.destroy
+        flash[:notice] = "Mission deleted!"
+      else
+        flash[:alert] = "Mission could not be deleted"
+      end
       
     else
       flash[:alert] = "Mission not found!"

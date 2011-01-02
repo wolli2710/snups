@@ -36,18 +36,19 @@ class ImagesController < ApplicationController
     #store to database-----------------------------------------#
     image.save()
   end
-  
-  def destroy
+   
+  def delete
     if image = Image.find(:first, :conditions => [ "id = ?", params[:id]])
       
-      require 'fileutils' 
-      FileUtils.rm_rf Dir[ "#{RAILS_ROOT}/public/images/upload/#{image.nameHash}*" ] 
+      File.delete("#{RAILS_ROOT}/public/images/upload/#{image.nameHash}_high.jpg")
+      File.delete("#{RAILS_ROOT}/public/images/upload/#{image.nameHash}_medium.jpg")
+      File.delete("#{RAILS_ROOT}/public/images/upload/#{image.nameHash}_low.jpg")
       
       image.destroy      
     end
   end
   
-  protected    
+  protected
   def resize_and_crop(image, size)
     if image[:width] < image[:height]
       shave_off = ((
