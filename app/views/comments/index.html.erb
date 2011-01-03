@@ -7,9 +7,12 @@
 <br>
 <p><i>click to delete Reported Comment:</i></p>
 <br>
-<p>
+<ul>
 <% @comments.each do |comment| %>
-<%= link_to(comment.user.name + " wrote  => " + comment.body   , comment_path(comment), :method => :delete, :confirm => "Are you sure?") %>
-<%= " reported: " + comment.report_count.to_s + " times" %><br>
+<li>
+	<%= comment.user.name %> wrote: <i><%= comment.body %></i><br>
+	reportet <%= comment.report_count.to_s %> times, 
+	<%= link_to "remove", comment_path(comment), :method => :delete, :confirm => "Are you sure?" %>
+</li>
 <% end %>
-</p>
+</ul>

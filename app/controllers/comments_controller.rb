@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   before_filter :check_admin, :only=> [:index]
   
   def index
-    @comments = Comment.where( 'report_count >= ?', 1 )
+    @comments = Comment.order("report_count DESC").find(:all, :conditions => "report_count > 0")
   end
   
   def create
@@ -15,9 +15,14 @@ class CommentsController < ApplicationController
   end
   
   def destroy
-   if comment = Comment.find(params[:id])
-     
+    if comment = Comment.find(:first, :conditions => [ "id = ?", params[:id]])
+      
       if comment.destroy
+        
+        for report in Report.where(:comment_id => comment.id)
+          report.destroy
+        end
+        
         flash[:notice] = "Comment deleted!"
       else
         flash[:alert] = "Comment could not be deleted"
