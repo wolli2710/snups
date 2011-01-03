@@ -42,16 +42,15 @@ class PagesController < ApplicationController
   end
   
   def gallery
-    @image_mission_id = Image.find_by_sql(" SELECT distinct mission_id FROM 'images' ") 
+    @image_mission_id = Image.find(:all, :group => :mission_id)
     @image_count = Image.all
 
     
     if params[:title]
-    mission_id = Mission.where(:title => params[:title])
-    
-    @gallery_images = Image.where(:mission_id => mission_id)
+      mission_id = Mission.where(:title => params[:title])
+      @gallery_images = Image.where(:mission_id => mission_id)
     else
-    @gallery_images = Image.order("updated_at DESC")
+      @gallery_images = Image.order("updated_at DESC").limit(24)
     end
   end
   

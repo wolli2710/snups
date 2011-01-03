@@ -1,25 +1,30 @@
 <h1>Gallery</h1>
 
-
-
 <% @image_mission_id.each do |image_mission| %>
-	<% counter = 15 %>
+	<% counter = 10 %>
 	<% @image_count.each do |i| %>
 		<% if i[:mission_id].to_i == image_mission.mission.id %>
-			<% if counter < 60 %>
-				<% counter += 1 %>
+			<% if counter < 20 %>
+				<% counter += 0.3 %>
 			<% end %>
 		<% end %>
 	<% end %>
 		<%= link_to image_mission.mission.title, gallery_path() + '?title=' + image_mission.mission.title, 
-		:style => "font-size:" + counter.to_s + "px", :class => "tag_cloud" %>
-
+		:style => "font-size:" + counter.round.to_s + "px", :class => "tag_cloud" %>
 <% end %>
 
 <br/>
+<br/>
 
 <% @gallery_images.each do |image| %>
-		<a href="/images/upload/<%= image.nameHash %>_high.jpg" class="lightbox">
-	        <%= image_tag( "upload/" + image.nameHash + "_low.jpg", :class => "gallery_images" )%>
-		</a>
+	<div class="gallery_images float_left">
+	<%= link_to image_tag("upload/" + image.nameHash + "_low.jpg", :border=>0), 
+		"images/upload/" + image.nameHash + "_high.jpg", :title => image.mission.title, :class => "lightbox" %>
+	<% if user_signed_in? %>	
+	<br>
+		<%= image.pos %> <%= link_to image_tag("thump_up.png", :border=>0), :controller => "ratings", :action => "up", :image_id => image.id, :user_id => current_user.id %> 
+		<%= image.neg %> <%= link_to image_tag("thump_down.png", :border=>0), :controller => "ratings", :action => "down", :image_id => image.id, :user_id => current_user.id %>
+		<%= link_to image_tag("report.png", :border=>0), :controller => "reports", :action => "image", :image_id => image.id, :user_id => current_user.id %>
+	<% end %>
+	</div>
 <% end %>

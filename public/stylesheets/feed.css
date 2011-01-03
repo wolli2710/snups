@@ -12,9 +12,12 @@ a.tag_cloud {
 	color:#04AA02
 }
 
-.gallery_images{
-	margin-top: 20px;
-	margin-bottom: 30px;
+.gallery_images {
+	width: 100px;
+	border: 1px solid #998260;
+	text-align: center;
+	padding: 1px;
+	margin: 2px;
 }
 
 .foto_stream_item {
