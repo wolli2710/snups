@@ -27,6 +27,7 @@ Snups::Application.routes.draw do
   end
   
   match 'mobile/login', :to => "mobile#login", :via => :post
+  match 'mobile/mission', :to => "mobile#mission", :via => :get
 
   root :to => "pages#home"
 end
