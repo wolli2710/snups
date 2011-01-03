@@ -11,4 +11,4 @@ doc/api
 doc/app
 db/*.sqlite3
 .tmp_*
-public/images/upload/*
+public/images/upload/*.jpg
