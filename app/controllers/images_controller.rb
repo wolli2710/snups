@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
   
   skip_before_filter :verify_authenticity_token, :only => :create 
-  before_filter :check_admin, :only=> [:index, :destroy]
+  before_filter :check_admin, :only=> [:index, :destroy, :edit]
   
   def index
     @reported_images = Image.order("report_count DESC").find(:all, :conditions => "report_count > 0")
@@ -63,6 +63,22 @@ class ImagesController < ApplicationController
         flash[:notice] = "Image deleted!"
       else
         flash[:alert] = "Image could not be deleted"
+      end
+    end
+    redirect_to :back
+  end
+  
+  def edit
+    if image = Image.find(:first, :conditions => [ "id = ?", params[:id]])
+      
+      image.report_count = 0
+      if image.save
+        for report in Report.where(:image_id => image.id)
+          report.destroy
+        end
+        flash[:notice] = "Reports set to zero!"
+      else
+        flash[:alert] = "Reports could not be set to zero"
       end
     end
     redirect_to :back

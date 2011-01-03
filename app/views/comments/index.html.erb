@@ -12,7 +12,8 @@
 <li>
 	<%= comment.user.name %> wrote: <i><%= comment.body %></i><br>
 	reportet <%= comment.report_count.to_s %> times, 
-	<%= link_to "remove", comment_path(comment), :method => :delete, :confirm => "Are you sure?" %>
+	<%= link_to "delete", comment_path(comment), :method => :delete, :confirm => "Are you sure?" %> 
+	<%= link_to "remove report", edit_comment_path(comment), :confirm => "Are you sure?" %>
 </li>
 <% end %>
 </ul>

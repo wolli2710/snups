@@ -7,6 +7,7 @@
 <%= link_to image_tag("upload/" + image.nameHash + "_low.jpg", :border=>0), "images/upload/" + image.nameHash + "_high.jpg", :class => "lightbox" %> 
 reported <%= image.report.count %> times.. 
 <%= link_to "delete", image_path(image), :method => :delete, :confirm => "Are you sure?" %>
+<%= link_to "remove report", edit_image_path(image), :confirm => "Are you sure?" %>
 </p>
 <br>
 <% end %>
