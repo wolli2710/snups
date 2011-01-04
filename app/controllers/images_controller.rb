@@ -8,15 +8,17 @@ class ImagesController < ApplicationController
   end
   
   def create  
+    user = User.where(:name => params[:username])
+    
     #database---------------------------------------------------#
-    image = Image.new(:user_id => params[:image][:user_id],
-                      :mission_id => params[:image][:mission_id])
-    imageName = Time.now.to_s+params[:image][:user_id]
+    image = Image.new(:user_id => user.id,
+                      :mission_id => params[:mission_id])
+    imageName = Time.now.to_s+params[:username]
     image.nameHash = Digest::SHA1.hexdigest(imageName)
     #-----------------------------------------------------------#
     
     #create images----------------------------------------------#
-    inputPath = params[:image][:data].path()
+    inputPath = params[:image].path()
     
     mainPath = Rails.root.to_s + "/public/images/upload/"
     output_high = mainPath + image.nameHash + "_high.jpg"
