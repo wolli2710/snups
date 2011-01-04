@@ -7,9 +7,30 @@ class ImagesController < ApplicationController
     @reported_images = Image.order("report_count DESC").find(:all, :conditions => "report_count > 0")
   end
   
-  def create  
-    user = User.where(:name => params[:username])
-    
+  def create
+    status = "ERROR" 
+    if user = User.find_by_name(params[:username])
+      if user.valid_password?(params[:password])
+        if mission = Mission.find_by_id(params[:mission_id])
+          if params[:image]
+            status = "SUCCESS"
+            handleUpload(user)
+          else
+            status = "NO IMAGE"
+          end
+        else
+          status = "WRONG MISSION"
+        end
+      else
+        status = "WRONG PASSWORD"
+      end
+    else
+      status = "WRONG USER"
+    end
+    render :json => {:status => status}
+  end
+  
+  def handleUpload(user)
     #database---------------------------------------------------#
     image = Image.new(:user_id => user.id,
                       :mission_id => params[:mission_id])
