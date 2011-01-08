@@ -158,6 +158,7 @@ img#logo{
 
 h1, h2, h3 {
 	color:#998260;
+	margin-bottom: 10px;
 }
 
 @font-face {
@@ -236,4 +237,185 @@ a {
 
 a:hover {
 	color:#473e30;
+}
+
+#content ul {
+	margin: 20px;
+}
+
+
+/*====================================*/
+/*====================================*/
+
+#user_nav {
+	height: 15px;
+	width: 900px;
+	margin: -270px auto 0px auto;
+	text-align: right;
+}
+#foto_stream{
+	width: 400px;
+}
+
+a.tag_cloud {
+	color:#04AA02
+}
+
+.gallery_images {
+	width: 100px;
+	border: 1px solid #998260;
+	text-align: center;
+	padding: 1px;
+	margin: 2px;
+}
+
+.foto_stream_item {
+	margin-bottom: 10px;
+	float: left;
+}
+
+.foto_avatar_col {
+	width: 100px;
+	text-align: center;
+}
+
+.foto_col {
+	width: 300px;
+}
+
+.comment_item {
+	margin-bottom: 5px;
+}
+
+.comment_avatar_col {
+	width: 50px;
+	text-align: center;
+}
+
+.comment_col {
+	width: 250px;	
+}
+
+.comment_new {
+	margin-left: 50px;
+}
+
+.float_right {
+	float: right;
+}
+
+.float_left {
+	float: left;
+}
+
+#pagination {
+	width: 390px;
+	background:#e5dccf;
+	text-align: center;
+	padding: 2px 5px;
+}
+
+#flash_alert, #flash_notice, #error_explanation {
+	padding: 2px;
+	margin: 1px;
+}
+
+#error_explanation li {
+	list-style: none;
+	color: #000000;
+	padding-left: 10px;
+}
+
+#error_explanation h2 {
+	display: none;
+}
+
+#flash_alert, #error_explanation {
+	background: #be4646;
+}
+
+#flash_notice {
+	background: #87be46;
+}
+/*--------sidebar--------*/
+
+ #sidebar {
+ 	width: 225px;
+}
+#followers {
+	background: #f00;
+	margin-bottom: 15px;
+}
+#followed {
+	background: #f00;
+}
+
+
+/*====================================*/
+/*====================================*/
+
+@media screen and (max-width: 480px) {
+	
+  #body {
+    background: #000;
+  }
+  
+  #content {
+	margin-left: 100px;
+	padding: 0px 25px 0px 25px;
+	width: 290px;	
+	position:relative;
+	z-index:100;
+	font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+img#logo {
+    border: medium none;
+    height: 151px;
+	margin-left:-10px;
+    margin-top: 15px;
+    width: 150px;
+}
+
+#menu ul li {
+    float: left;
+    list-style: none outside none;
+    margin-top: 50px;
+    padding-right: 10px;
+}
+
+#menu ul {
+	margin-left:-35px;
+	font-size:12px;
+}
+
+.inhalt {
+    width: 320px;
+}
+
+#main {
+	background-image:none;
+	background-color:#f7ecd8;
+	margin-top: 0px;
+	
+}
+
+#top_nav {
+    background-image:none;
+    height: 270px;
+    overflow: hidden;
+    width: 900px;
+}
+
+#unten {
+    background-image:none;
+    height: 70px;
+    overflow: hidden;
+    width: 900px;
+}
+
+#info {
+	margin-left:0px;
+}
+  
 }

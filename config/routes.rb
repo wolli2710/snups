@@ -22,7 +22,7 @@ Snups::Application.routes.draw do
     match 'impressum' => :impressum
     match 'favorites' => :favorites
     match 'gallery' => :gallery
-    match 'notice' => :notice
+    match 'terms' => :terms
     match 'about' => :about
   end
   

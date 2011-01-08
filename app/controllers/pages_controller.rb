@@ -8,10 +8,6 @@ class PagesController < ApplicationController
     @images = Image.order("created_at DESC").limit(5).offset(@offset)
   end
   
-  def tutorial
-    
-  end
-  
   def profile
     
     if @user = User.find(:first, :conditions => [ "id = ?", params[:id]])
@@ -35,10 +31,6 @@ class PagesController < ApplicationController
     @friend_ids = Friendship.where(:user_id => current_user.id).find(:all, :select => 'friend_id').map(&:friend_id)
     @images = Image.where(:user_id => @friend_ids).order("created_at DESC").limit(5).offset(@offset)
     @imageCount = Image.where(:user_id => @friend_ids).count
-  end
-  
-  def impressum
-    
   end
   
   def gallery
