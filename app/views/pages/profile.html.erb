@@ -2,11 +2,11 @@
 	<% if user_signed_in? && current_user.id != @user.id %>
 	<% if @is_following %>
 		<% for friendship in Friendship.where(:user_id => current_user.id, :friend_id => @user.id) %>
-      		<%= link_to "remove", friendship, :method => :delete, :id => "remove_followed" %><br/>
+      		<%= link_to image_tag("unfollow.png", :border=>0), friendship, :method => :delete, :id => "remove_followed" %><br/>
   		<% end %>
 		
 	<% else %>
-		<p><%= link_to "Follow", friendships_path(:friend_id => @user), :method => :post %></p>
+		<p><%= link_to image_tag("follow.png", :border=>0), friendships_path(:friend_id => @user), :method => :post %></p>
 	<% end %>
 	<% end %>
 	<%= @user.name %> is followed by:
