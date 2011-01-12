@@ -35,14 +35,13 @@ class PagesController < ApplicationController
   
   def gallery
     @image_mission_id = Image.find(:all, :group => :mission_id)
-    @image_count = Image.all
+    @images = Image.all
 
-    
     if params[:title]
-      mission_id = Mission.where(:title => params[:title])
+      mission_id = Mission.find(:all, :conditions => [ "title = ?", params[:title]])
       @gallery_images = Image.where(:mission_id => mission_id)
     else
-      @gallery_images = Image.order("updated_at DESC").limit(24)
+      @gallery_images = Image.order("created_at DESC").limit(24)
     end
   end
   
