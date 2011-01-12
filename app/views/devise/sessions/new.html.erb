@@ -1,10 +1,10 @@
 <div id="sidebar" class="float_right">
-	<%= render 'layouts/current_image' %>
+  <%= render 'layouts/current_image' %>
+  <br/>
+  <%= render 'pages/facebook_like' %>
 </div>
 
 <h1>Snups - Login</h1>
-
-
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <p><%= f.label :name %><br />

@@ -1,10 +1,12 @@
 <div id="sidebar" class="float_right">
-	<%= render 'layouts/current_image' %>
-	<br/>
-	<%= render 'facebook_like' %>
+  <%= render 'layouts/current_image' %>
+  <br/>
+  <%= render 'facebook_like' %>
 </div>
 
 <h1>Snups - Home</h1>
+<p>Here you see the latest pics taken by the community!</p>
+<br/>
 
 <%= render 'fotostream', { :personalization => true } %>
 

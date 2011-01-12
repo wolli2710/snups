@@ -24,23 +24,25 @@
 <div id="top_bg"> </div>
 <div id="top_strip"></div>
 <div id="user_nav">
+  <p>
     <% if user_signed_in? %>
     Signed in as <%= current_user.name %> (<%= link_to "edit Profile", edit_user_registration_path %>). Not you? <%= link_to "Logout", destroy_user_session_path %>
     <% else %>
     <%= link_to "Register", new_user_registration_path %> or <%= link_to "Login", new_user_session_path %>
     <% end %>
+  </p>
 </div>
 <div id="wrapper">
   <div id="top_nav"><%= link_to image_tag("logo.png", :border=>0, :id => "logo"), home_path %>
     <div id="menu">
       <ul>
         <li><a href="<%= home_path() %>"><span class="bold">Snups</span><span class="description">up to the next<br/>
-          snups-challenge</a></span></li>
+          snups-challenge</span></a></li>
         <li><a href="<%= gallery_path() %>"><span class="bold">Gallery</span><span class="description">the photo gallery<br/>
           is a collection of<br/>
-          the winner-images</a></span></li>
+          the winner-images</span></a></li>
         <li><a href="<%= tutorial_path() %>"><span class="bold">Tutorial</span><span class="description">how to play snups,<br/>
-          gameinstructions</a></span></li>
+          gameinstructions</span></a></li>
       </ul>
     </div>
   </div>
@@ -49,21 +51,21 @@
     <% if user_signed_in? %>
       <ul>
         <li class="nav1"><a href="<%= profile_path() + "?id=" + current_user.id.to_s %>">My Profile</a></li>
-		<li class="nav2"><%= link_to "My Favorites", favorites_path %></li>
+        <li class="nav2"><%= link_to "My Favorites", favorites_path %></li>
         <li class="nav3"><%= link_to "New Mission", new_mission_path %></li>
       </ul>
-	<% else %>
-	  <ul>
+    <% else %>
+      <ul>
         <li class="nav1"><%= link_to "Login", new_user_session_path %></li>
-		<li class="nav2"><%= link_to "Register", new_user_registration_path %></li>
+	<li class="nav2"><%= link_to "Register", new_user_registration_path %></li>
         <li class="nav3"><%= link_to "Tutorial", tutorial_path %></li>
       </ul>
-	<% end %>
+    <% end %>
     </div>
     <div id="content">
     <div class="inhalt">
     <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
     <% end %>
     <%= yield %>
     </div>
@@ -76,16 +78,16 @@
 <!--/main-->
 
 <div id="unten">
-	<span id="info">
-		<%= link_to "about", about_path %> - 
-		<%= link_to "impressum", impressum_path %>  - 
-		<%= link_to "terms of service", terms_path %> 
-		<% if user_signed_in? %>
-			<% if current_user.admin? %>
-			 	- <%= link_to "administration", admins_path %>
-			<% end %>
-		<% end %>
-	</span>
+  <span id="info">
+    <%= link_to "about", about_path %> -
+    <%= link_to "impressum", impressum_path %>  -
+    <%= link_to "terms of service", terms_path %>
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        - <%= link_to "administration", admins_path %>
+      <% end %>
+    <% end %>
+  </span>
 </div>
 </div>
 <!--/wrapper-->

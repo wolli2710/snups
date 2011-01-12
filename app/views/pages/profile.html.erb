@@ -1,34 +1,43 @@
 <div id="sidebar" class="float_right">
-	<% if user_signed_in? && current_user.id != @user.id %>
-		<% if @is_following %>
-	      	<p><%= link_to image_tag("unfollow.png", :border=>0), get_following(:user => @user), :method => :delete, :id => "remove_followed" %></p>
-		<% else %>
-			<p><%= link_to image_tag("follow.png", :border=>0), friendships_path(:friend_id => @user), :method => :post %></p>
-		<% end %>
-	<% end %>
-	<%= @user.name %> is followed by:
-	<div id="followers">
-		<% for user in @user.inverse_friends %>
-			<a href="<%= profile_path() + "?id=" + user.id.to_s  %>" title="<%= user.name %>" class="float_left" >
-    			<%= image_tag user.gravatar_url :size => "45 x 45", :alt => user.name %>
-			</a>
-  		<% end %>
-	</div>
-	
-	<div class="clr"></div>
-	<%= @user.name %> follows:
-	<div id="followed">
-		<% for friendship in @user.friendships %>
-      		<a href="<%= profile_path() + "?id=" + friendship.friend_id.to_s  %>" title="<%= friendship.friend.name %>" class="float_left" >
-      			<%= image_tag friendship.friend.gravatar_url :size => "45 x 45", :alt => friendship.friend.name %>
-      		</a>
-  		<% end %>
-	</div>
+  <% if user_signed_in? && current_user.id != @user.id %>
+    <% if @is_following %>
+    <p>
+      <%= link_to image_tag("unfollow.png", :border=>0),
+        get_following(:user => @user), :method => :delete, :id => "remove_followed" %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to image_tag("follow.png", :border=>0),
+        friendships_path(:friend_id => @user), :method => :post %>
+    </p>
+    <% end %>
+  <% end %>
+  <%= @user.name %> is followed by:
+  <div id="followers">
+    <% for user in @user.inverse_friends %>
+    <p>
+      <a href="<%= profile_path() + "?id=" + user.id.to_s  %>" title="<%= user.name %>" class="float_left" >
+      <%= image_tag user.gravatar_url :size => "45 x 45", :alt => user.name %></a>
+    </p>
+    <% end %>
+  </div>
+
+  <div class="clr"></div>
+
+  <%= @user.name %> follows:
+  <div id="followed">
+    <% for friendship in @user.friendships %>
+    <p>
+      <a href="<%= profile_path() + "?id=" + friendship.friend_id.to_s  %>" title="<%= friendship.friend.name %>" class="float_left" >
+      <%= image_tag friendship.friend.gravatar_url :size => "45 x 45", :alt => friendship.friend.name %></a>
+    </p>
+    <% end %>
+  </div>
 </div>
 
 <h1><%= image_tag @user.gravatar_url  %> Profile of <%= @user.name %></h1>
 <br />
-About: <i><%= @user.about %></i>
+<p>About: <i><%= @user.about %></i></p>
 <br />
 <br />
 <h2>Pictures taken by <%= @user.name %>:</h2>

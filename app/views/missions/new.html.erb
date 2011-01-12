@@ -1,15 +1,17 @@
 <div id="sidebar" class="float_right">
-	<%= render 'layouts/current_image' %>
+  <%= render 'layouts/current_image' %>
+  <br/>
+  <%= render 'pages/facebook_like' %>
 </div>
 
 <h1>Suggest New Mission</h1>
-<p>Here you can suggest new missions which are displayed <br/>on the mobile devices.</p>
+<p>
+  Here you can suggest new missions which are displayed <br/>
+  on the mobile devices.
+</p>
 
 <%= form_for(@mission) do |f| %>
-
-<%= f.label :title %>
-<%= f.text_field :title %>
-
-<%= f.submit "suggest Mission" %>
-
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.submit "suggest Mission" %>
 <% end %>

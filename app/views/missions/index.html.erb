@@ -1,24 +1,27 @@
 <%= render 'layouts/admin_menue' %>
 
 <h2>Missions</h2>
-<br>
+<br/>
+
 <h3>All Missions which have to be approved:</h3>
-<br>
+<br/>
+
 <% @missions.each do |mission| %>
-<p>
-<%= link_to("remove", mission_path(mission), :method => :delete, :confirm => "Are you sure?") %> 
-<%= link_to("approve", edit_mission_path(mission), :confirm => "Are you sure?") %> 
-<%= mission.title %> 
-</p>
+  <p>
+    <%= link_to("remove", mission_path(mission), :method => :delete, :confirm => "Are you sure?") %>
+    <%= link_to("approve", edit_mission_path(mission), :confirm => "Are you sure?") %>
+    <%= mission.title %>
+  </p>
 <% end %>
 
-<br>
+<br/>
 <h3>All Missions which are approved:</h3>
-<br>
+<br/>
 <p><i>click to delete mission and all images in it</i></p>
-<br>
+<br/>
 <p>
-<% @approved_missions.each do |mission| %>
-<%= link_to(mission.title, mission_path(mission), :method => :delete, :confirm => "Are you sure?") %><%= " - " unless mission == @approved_missions.last %>
-<% end %>
+  <% @approved_missions.each do |mission| %>
+    <%= link_to(mission.title, mission_path(mission), :method => :delete, :confirm => "Are you sure?") %>
+    <%= " - " unless mission == @approved_missions.last %>
+  <% end %>
 </p>

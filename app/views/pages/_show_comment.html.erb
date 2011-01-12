@@ -5,9 +5,11 @@
     <div class="comment_col float_right">
         <p>
             <a href="<%= profile_path() + "?id=" + comment.user.id.to_s %>"><%= comment.user.name %></a>
-            wrote:<% if user_signed_in? %>
-            <span class="float_right">
-            	<%= link_to image_tag("report.png", :border=>0), :controller => "reports", :action => "comment", :comment_id => comment.id, :user_id => current_user.id %></span>
+            wrote:
+            <% if user_signed_in? %>
+              <span class="float_right">
+            	<%= link_to image_tag("report.png", :border=>0), :controller => "reports", :action => "comment", :comment_id => comment.id, :user_id => current_user.id %>
+              </span>
             <% end %>
         </p>
         <p>

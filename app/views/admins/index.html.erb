@@ -1,17 +1,19 @@
 <%= render 'layouts/admin_menue' %>
 
 <h2>Admins</h2>
-
-<br />
+<br/>
 
 <% @users.each do |user| %>
-<p><%= link_to("remove", admin_path(user), :method => :delete, :confirm => "Are you sure?") %> <%= user.name %> </p>
+  <p>
+    <%= link_to("remove", admin_path(user), :method => :delete, :confirm => "Are you sure?") %>
+    <%= user.name %>
+  </p>
 <% end %>
 
-<br />
+<br/>
 <p>Add new Admin</p>
 <% form_tag(admins_path, :method => :post) do %>
-	<%= label_tag "Name" %>
-	<%= text_field_tag :name %>
-	<%= submit_tag "Add Admin" %>
+  <%= label_tag "Name" %>
+  <%= text_field_tag :name %>
+  <%= submit_tag "Add Admin" %>
 <% end %>

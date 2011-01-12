@@ -1,19 +1,18 @@
 <%= render 'layouts/admin_menue' %>
 
 <h2>Comments</h2>
-
-<br>
+<br/>
 <h3>All Reported Comments:</h3>
-<br>
+<br/>
 <p><i>click to delete Reported Comment:</i></p>
-<br>
+<br/>
 <ul>
 <% @comments.each do |comment| %>
-<li>
-	<%= comment.user.name %> wrote: <i><%= comment.body %></i><br>
-	reportet <%= comment.report_count.to_s %> times, 
-	<%= link_to "delete", comment_path(comment), :method => :delete, :confirm => "Are you sure?" %> 
-	<%= link_to "remove report", edit_comment_path(comment), :confirm => "Are you sure?" %>
-</li>
+  <li>
+    <%= comment.user.name %> wrote: <i><%= comment.body %></i><br/>
+    reportet <%= comment.report_count.to_s %> times,
+    <%= link_to "delete", comment_path(comment), :method => :delete, :confirm => "Are you sure?" %>
+    <%= link_to "remove report", edit_comment_path(comment), :confirm => "Are you sure?" %>
+  </li>
 <% end %>
 </ul>

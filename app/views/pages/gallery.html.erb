@@ -1,17 +1,15 @@
 <h1>Gallery</h1>
 <% @image_mission_id.each do |image_mission| %>
- 	<%= link_to image_mission.mission.title, gallery_path() + '?title=' + image_mission.mission.title, 
+  <%= link_to image_mission.mission.title, gallery_path() + '?title=' + image_mission.mission.title,
     :style => "font-size:" + calculate_tag_size(:image_mission => image_mission) + "px", :class => "tag_cloud" %> 
 <% end %>
 <br/>
 <br/>
 
 <% @gallery_images.each do |image| %>
-	<div class="gallery_images float_left">
-	<%= link_to image_tag("upload/" + image.nameHash + "_low.jpg", :border=>0), 
-		"images/upload/" + image.nameHash + "_high.jpg", :title => image.mission.title, :class => "lightbox" %>
-
-	<%= render 'image_rating', { :image => image } %>
-
-	</div>
+  <div class="gallery_images float_left">
+    <%= link_to image_tag("upload/" + image.nameHash + "_low.jpg", :border=>0),
+          "images/upload/" + image.nameHash + "_high.jpg", :title => image.mission.title, :class => "lightbox" %>
+    <%= render 'image_rating', { :image => image } %>
+  </div>
 <% end %>

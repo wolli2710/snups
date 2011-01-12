@@ -1,17 +1,17 @@
 <div id="pagination" class="float_left">Page <%= @offset/5 +1 %>
 <% if (@offset.to_i >= 5) %>
-	<% if id_is_needed %>
-		<a href="<%= pagination_path + "?id=" + @user.id.to_s + "&offset=" + (@offset - 5).to_s %>"><span class="float_left">Back</span></a>
-	<% else %>
-		<a href="<%= pagination_path + "?offset=" + (@offset - 5).to_s %>"><span class="float_left">Back</span></a>
-	<% end %>
+  <% if id_is_needed %>
+    <a href="<%= pagination_path + "?id=" + @user.id.to_s + "&offset=" + (@offset - 5).to_s %>"><span class="float_left">Back</span></a>
+  <% else %>
+    <a href="<%= pagination_path + "?offset=" + (@offset - 5).to_s %>"><span class="float_left">Back</span></a>
+  <% end %>
 <% end %>
 
 <% if (@imageCount.to_i > @offset.to_i + 5) %>
-	<% if id_is_needed %>
-		<a href="<%= pagination_path + "?id=" + @user.id.to_s + "&offset=" + (@offset + 5).to_s %>"><span class="float_right">Next</span></a>
-	<% else %>
-		<a href="<%= pagination_path + "?offset=" + (@offset + 5).to_s %>"><span class="float_right">Next</span></a>
-	<% end %>
+  <% if id_is_needed %>
+    <a href="<%= pagination_path + "?id=" + @user.id.to_s + "&offset=" + (@offset + 5).to_s %>"><span class="float_right">Next</span></a>
+  <% else %>
+    <a href="<%= pagination_path + "?offset=" + (@offset + 5).to_s %>"><span class="float_right">Next</span></a>
+  <% end %>
 <% end %>
 </div>
