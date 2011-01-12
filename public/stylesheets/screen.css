@@ -4,6 +4,10 @@
 	padding:0px;
 }
 
+img {
+    border: 0px;
+}
+
 body {
 	background-color:#f9f0e1;
 }

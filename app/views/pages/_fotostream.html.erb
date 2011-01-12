@@ -14,7 +14,7 @@
                 <% end %>
                 <span class="float_right">Mission: "<%= image.mission.title %>"</span>
             </p>
-            <%= link_to image_tag("upload/" + image.nameHash + "_medium.jpg", :border=>0), "images/upload/" + image.nameHash + "_high.jpg", :class => "lightbox" %> 
+            <%= link_to image_tag("upload/" + image.nameHash + "_medium.jpg"), "images/upload/" + image.nameHash + "_high.jpg", :class => "lightbox" %> 
             <div class="float_right">
                 <%= render 'image_rating', { :image => image } %>
             </div>

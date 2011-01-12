@@ -1,6 +1,6 @@
 <% if user_signed_in? %>	
 <br/>
-  <%= image.pos %> <%= link_to image_tag("thump_up.png", :border=>0), :controller => "ratings", :action => "up", :image_id => image.id, :user_id => current_user.id %>
-  <%= image.neg %> <%= link_to image_tag("thump_down.png", :border=>0), :controller => "ratings", :action => "down", :image_id => image.id, :user_id => current_user.id %>
-  <%= link_to image_tag("report.png", :border=>0), :controller => "reports", :action => "image", :image_id => image.id, :user_id => current_user.id %>
+  <%= image.pos %> <%= link_to image_tag("thump_up.png"), :controller => "ratings", :action => "up", :image_id => image.id, :user_id => current_user.id %>
+  <%= image.neg %> <%= link_to image_tag("thump_down.png"), :controller => "ratings", :action => "down", :image_id => image.id, :user_id => current_user.id %>
+  <%= link_to image_tag("report.png"), :controller => "reports", :action => "image", :image_id => image.id, :user_id => current_user.id %>
 <% end %>

@@ -11,7 +11,7 @@
 <%= javascript_include_tag :defaults %>
 <%= javascript_include_tag 'jquery.lightbox-0.5.min' %>
 
-<script language="JavaScript" type="text/javascript" >
+<script type="text/javascript" >
 	$(function() {
 	$('a.lightbox').lightBox();
 	});
@@ -33,7 +33,7 @@
   </p>
 </div>
 <div id="wrapper">
-  <div id="top_nav"><%= link_to image_tag("logo.png", :border=>0, :id => "logo"), home_path %>
+  <div id="top_nav"><%= link_to image_tag("logo.png", :id => "logo"), home_path %>
     <div id="menu">
       <ul>
         <li><a href="<%= home_path() %>"><span class="bold">Snups</span><span class="description">up to the next<br/>
