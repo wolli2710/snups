@@ -1,6 +1,5 @@
 class RatingsController < ApplicationController
   
-  
   def up
     rating = Rating.new(:user_id => params[:user_id],
                         :image_id => params[:image_id])

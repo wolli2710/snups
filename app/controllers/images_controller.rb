@@ -14,7 +14,7 @@ class ImagesController < ApplicationController
         if mission = Mission.find_by_id(params[:mission_id])
           if params[:image]
             status = "SUCCESS"
-            handleUpload(user)
+            handle_upload(user)
           else
             status = "NO IMAGE"
           end
@@ -30,31 +30,31 @@ class ImagesController < ApplicationController
     render :json => {:status => status}
   end
   
-  def handleUpload(user)
+  def handle_upload(user)
     #database---------------------------------------------------#
     image = Image.new(:user_id => user.id,
                       :mission_id => params[:mission_id])
-    imageName = Time.now.to_s+params[:username]
-    image.nameHash = Digest::SHA1.hexdigest(imageName)
+    image_name = Time.now.to_s+params[:username]
+    image.nameHash = Digest::SHA1.hexdigest(image_name)
     #-----------------------------------------------------------#
     
     #create images----------------------------------------------#
-    inputPath = params[:image].path()
+    input_path = params[:image].path()
     
-    mainPath = Rails.root.to_s + "/public/images/upload/"
-    output_high = mainPath + image.nameHash + "_high.jpg"
-    output_medium = mainPath + image.nameHash + "_medium.jpg"
-    output_low = mainPath + image.nameHash + "_low.jpg"
+    main_path = Rails.root.to_s + "/public/images/upload/"
+    output_high = main_path + image.nameHash + "_high.jpg"
+    output_medium = main_path + image.nameHash + "_medium.jpg"
+    output_low = main_path + image.nameHash + "_low.jpg"
     
-    uploadedImage = MiniMagick::Image.open(inputPath)
+    uploaded_image = MiniMagick::Image.open(input_path)
     
-    uploadedImage.write  output_high
+    uploaded_image.write  output_high
     
-    uploadedImage = resize_and_crop_banner(uploadedImage, 300, 150)
-    uploadedImage.write output_medium
+    uploaded_image = resize_and_crop_banner(uploaded_image, 300, 150)
+    uploaded_image.write output_medium
     
-    uploadedImage = resize_and_crop(uploadedImage, 100)
-    uploadedImage.write output_low
+    uploaded_image = resize_and_crop(uploaded_image, 100)
+    uploaded_image.write output_low
     
     #store to database-----------------------------------------#
     image.save()
@@ -63,9 +63,9 @@ class ImagesController < ApplicationController
   def destroy
     if image = Image.find(:first, :conditions => [ "id = ?", params[:id]])
       
-      File.delete("#{RAILS_ROOT}/public/images/upload/#{image.nameHash}_high.jpg")
-      File.delete("#{RAILS_ROOT}/public/images/upload/#{image.nameHash}_medium.jpg")
-      File.delete("#{RAILS_ROOT}/public/images/upload/#{image.nameHash}_low.jpg")
+      File.delete("#{Rails.root}/public/images/upload/#{image.nameHash}_high.jpg")
+      File.delete("#{Rails.root}/public/images/upload/#{image.nameHash}_medium.jpg")
+      File.delete("#{Rails.root}/public/images/upload/#{image.nameHash}_low.jpg")
       
       for comment in Comment.where(:image_id => image.id)
         for report in Report.where(:comment_id => comment.id)
