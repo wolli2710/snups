@@ -26,9 +26,9 @@ class MissionsController < ApplicationController
     if mission = Mission.find(:first, :conditions => [ "id = ?", params[:id]])
       
       for image in Image.where(:mission_id => params[:id])
-        File.delete("#{RAILS_ROOT}/public/images/upload/#{image.nameHash}_high.jpg")
-        File.delete("#{RAILS_ROOT}/public/images/upload/#{image.nameHash}_medium.jpg")
-        File.delete("#{RAILS_ROOT}/public/images/upload/#{image.nameHash}_low.jpg")
+        File.delete("#{Rails.root}/public/images/upload/#{image.nameHash}_high.jpg")
+        File.delete("#{Rails.root}/public/images/upload/#{image.nameHash}_medium.jpg")
+        File.delete("#{Rails.root}/public/images/upload/#{image.nameHash}_low.jpg")
         
         for comment in Comment.where(:image_id => image.id)
           for report in Report.where(:comment_id => comment.id)

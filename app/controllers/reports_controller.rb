@@ -10,7 +10,7 @@ class ReportsController < ApplicationController
         flash[:notice] = "Thank you for reporting this Image!"
       end
     else
-       flash[:alert] = "You already reported this Image!"
+      flash[:alert] = "You already reported this Image!"
     end
     redirect_to :back
   end

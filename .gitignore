@@ -12,3 +12,4 @@ doc/app
 db/*.sqlite3
 .tmp_*
 public/images/upload/*.jpg
+nbproject/

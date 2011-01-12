@@ -24,4 +24,5 @@ class User < ActiveRecord::Base
   
   validates :name, :length => {:minimum => 3}
   validates_uniqueness_of :name
+
 end
