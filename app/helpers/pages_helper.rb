@@ -11,4 +11,8 @@ module PagesHelper
     end 
     return counter.round.to_s
   end
+  
+  def get_following(args)
+    return Friendship.find(:first, :conditions => { :user_id => current_user.id, :friend_id => args[:user].id } )
+  end
 end

@@ -1,13 +1,10 @@
 <div id="sidebar" class="float_right">
 	<% if user_signed_in? && current_user.id != @user.id %>
-	<% if @is_following %>
-		<% for friendship in Friendship.where(:user_id => current_user.id, :friend_id => @user.id) %>
-      		<%= link_to image_tag("unfollow.png", :border=>0), friendship, :method => :delete, :id => "remove_followed" %><br/>
-  		<% end %>
-		
-	<% else %>
-		<p><%= link_to image_tag("follow.png", :border=>0), friendships_path(:friend_id => @user), :method => :post %></p>
-	<% end %>
+		<% if @is_following %>
+	      	<p><%= link_to image_tag("unfollow.png", :border=>0), get_following(:user => @user), :method => :delete, :id => "remove_followed" %></p>
+		<% else %>
+			<p><%= link_to image_tag("follow.png", :border=>0), friendships_path(:friend_id => @user), :method => :post %></p>
+		<% end %>
 	<% end %>
 	<%= @user.name %> is followed by:
 	<div id="followers">
@@ -25,7 +22,6 @@
       		<a href="<%= profile_path() + "?id=" + friendship.friend_id.to_s  %>" title="<%= friendship.friend.name %>" class="float_left" >
       			<%= image_tag friendship.friend.gravatar_url :size => "45 x 45", :alt => friendship.friend.name %>
       		</a>
-      		<!-- (<%= link_to "remove", friendship, :method => :delete %>) -->
   		<% end %>
 	</div>
 </div>
@@ -37,6 +33,6 @@ About: <i><%= @user.about %></i>
 <br />
 <h2>Pictures taken by <%= @user.name %>:</h2>
 
-<%= render 'fotostream', { :showAvatar => false } %>
+<%= render 'fotostream', { :personalization => false } %>
 
-<%= render 'pagination', { :pagination_path => profile_path } %>
+<%= render 'pagination', { :pagination_path => profile_path, :id_is_needed => true } %>

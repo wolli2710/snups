@@ -4,12 +4,10 @@ class PagesController < ApplicationController
   
   def home
     @imageCount = Image.count
-    @user = User.new
     @images = Image.order("created_at DESC").limit(5).offset(@offset)
   end
   
   def profile
-    
     if @user = User.find(:first, :conditions => [ "id = ?", params[:id]])
       @imageCount = Image.where(:user_id => params[:id].to_i).count
       @images = Image.order("created_at DESC").limit(5).offset(@offset).where(:user_id => params[:id].to_i)

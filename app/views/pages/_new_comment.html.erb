@@ -1,0 +1,14 @@
+<div class="comment_new">
+    <% if user_signed_in? %>
+    <p>
+        New Comment:
+    </p>
+    <% form_tag('/comments', :method => :post) do %>
+    <%= hidden_field_tag 'user_id', current_user.id %>
+    <%= hidden_field_tag 'image_id', image.id %>
+    <%= text_area_tag :body %>
+    <br/>
+    <%= submit_tag "Comment" %>
+    <% end %>
+    <% end %>
+</div>
