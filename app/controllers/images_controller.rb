@@ -49,9 +49,7 @@ class ImagesController < ApplicationController
 
       image.report_count = 0
       if image.save
-        for report in Report.where(:image_id => image.id)
-          report.destroy
-        end
+        Image.set_report_count(image)
         flash[:notice] = "Reports set to zero!"
       else
         flash[:alert] = "Reports could not be set to zero"

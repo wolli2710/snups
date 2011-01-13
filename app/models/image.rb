@@ -72,4 +72,10 @@ class Image < ActiveRecord::Base
 
     return image
   end
+
+  def self.set_report_count(image)
+    for report in Report.where(:image_id => image.id)
+      report.destroy
+    end
+  end
 end

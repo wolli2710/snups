@@ -11,13 +11,6 @@ class PagesController < ApplicationController
     if @user = User.find(:first, :conditions => [ "id = ?", params[:id]])
       @imageCount = Image.where(:user_id => params[:id].to_i).count
       @images = Image.order("created_at DESC").limit(5).offset(@offset).where(:user_id => params[:id].to_i)
-      if (current_user)  
-        if (Friendship.where(:user_id => current_user.id, :friend_id => @user.id ).count > 0)
-          @is_following = true
-        else
-          @is_following = false
-        end
-      end
     else
       redirect_to home_path()
     end

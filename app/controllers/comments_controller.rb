@@ -36,12 +36,10 @@ class CommentsController < ApplicationController
 
   def edit
     if comment = Comment.find(:first, :conditions => [ "id = ?", params[:id]])
-      
+
       comment.report_count = 0
       if comment.save
-        for report in Report.where(:comment_id => comment.id)
-          report.destroy
-        end
+        Comment.set_report_count(comment)
         flash[:notice] = "Reports set to zero!"
       else
         flash[:alert] = "Reports could not be set to zero"

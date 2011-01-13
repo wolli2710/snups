@@ -1,6 +1,6 @@
 <div id="sidebar" class="float_right">
   <% if user_signed_in? && current_user.id != @user.id %>
-    <% if @is_following %>
+    <% if is_following(current_user, @user) %>
     <p>
       <%= link_to image_tag("unfollow.png", :border=>0),
         get_following(:user => @user), :method => :delete, :id => "remove_followed" %>

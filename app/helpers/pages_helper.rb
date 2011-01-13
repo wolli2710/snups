@@ -15,4 +15,14 @@ module PagesHelper
   def get_following(args)
     return Friendship.find(:first, :conditions => { :user_id => current_user.id, :friend_id => args[:user].id } )
   end
+
+  def is_following(current_user, user)
+    if (current_user)
+      if (Friendship.where(:user_id => current_user.id, :friend_id => user.id ).count > 0)
+       return true
+      else
+        return false
+      end
+    end
+  end
 end
