@@ -1,7 +1,7 @@
 class Comment < ActiveRecord::Base
 	belongs_to :image
 	belongs_to :user
-  has_many :report
+  has_many :report, :dependent => :destroy
 
   attr_accessible :user_id, :image_id, :body
 

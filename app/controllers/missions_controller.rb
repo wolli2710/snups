@@ -25,29 +25,6 @@ class MissionsController < ApplicationController
   def destroy
     if mission = Mission.find(:first, :conditions => [ "id = ?", params[:id]])
       
-      for image in Image.where(:mission_id => params[:id])
-        File.delete("#{Rails.root}/public/images/upload/#{image.nameHash}_high.jpg")
-        File.delete("#{Rails.root}/public/images/upload/#{image.nameHash}_medium.jpg")
-        File.delete("#{Rails.root}/public/images/upload/#{image.nameHash}_low.jpg")
-        
-        for comment in Comment.where(:image_id => image.id)
-          for report in Report.where(:comment_id => comment.id)
-            report.destroy
-          end
-          comment.destroy
-        end
-        
-        for rating in Rating.where(:image_id => image.id)
-          rating.destroy
-        end
-        
-        for report in Report.where(:image_id => image.id)
-          report.destroy
-        end
-      
-        image.destroy
-      end
-      
       if mission.destroy
         flash[:notice] = "Mission deleted!"
       else

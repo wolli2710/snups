@@ -22,11 +22,6 @@ class CommentsController < ApplicationController
     if comment = Comment.find(:first, :conditions => [ "id = ?", params[:id]])
       
       if comment.destroy
-        
-        for report in Report.where(:comment_id => comment.id)
-          report.destroy
-        end
-        
         flash[:notice] = "Comment deleted!"
       else
         flash[:alert] = "Comment could not be deleted"

@@ -1,5 +1,5 @@
 class Mission < ActiveRecord::Base
-	has_many :image
+	has_many :image, :dependent => :destroy
   
   attr_accessible :title
 

@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  
+
   skip_before_filter :verify_authenticity_token, :only => :create 
   before_filter :check_admin, :only=> [:index, :destroy, :edit]
   
@@ -62,26 +62,6 @@ class ImagesController < ApplicationController
    
   def destroy
     if image = Image.find(:first, :conditions => [ "id = ?", params[:id]])
-      
-      File.delete("#{Rails.root}/public/images/upload/#{image.nameHash}_high.jpg")
-      File.delete("#{Rails.root}/public/images/upload/#{image.nameHash}_medium.jpg")
-      File.delete("#{Rails.root}/public/images/upload/#{image.nameHash}_low.jpg")
-      
-      for comment in Comment.where(:image_id => image.id)
-        for report in Report.where(:comment_id => comment.id)
-          report.destroy
-        end
-        comment.destroy
-      end
-      
-      for rating in Rating.where(:image_id => image.id)
-        rating.destroy
-      end
-      
-      for report in Report.where(:image_id => image.id)
-        report.destroy
-      end
-    
       if image.destroy
         flash[:notice] = "Image deleted!"
       else
