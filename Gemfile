@@ -9,10 +9,10 @@ gem 'capistrano'
 
 group :development, :test do
   gem 'sqlite3-ruby', :require => 'sqlite3'
-  
+  gem 'shoulda'
+  gem "rspec-rails", "2.0.0.beta.12"
 end
 
 group :production do
   gem 'mysql2'
-  
 end
