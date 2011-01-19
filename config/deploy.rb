@@ -1,7 +1,7 @@
 set :application, "snups"
-set :repository,  "ssh://fhs31478@mediacube.at/var/www/virthosts/franzonrails.multimediatechnology.at/gitrepo"
+set :repository,  "ssh://fhs31478@mediacube.at/var/www/virthosts/snups.multimediatechnology.at/gitrepo"
 
-set :deploy_to, "/var/www/virthosts/franzonrails.multimediatechnology.at/"
+set :deploy_to, "/var/www/virthosts/snups.multimediatechnology.at/public"
 set :user, "fhs31478"
 set :use_sudo, false
 
