@@ -3,7 +3,7 @@
     <div class="foto_stream_item">
         <div class="foto_avatar_col float_left">
             <% if personalization %>
-            <a href="<%= profile_path() + "?id=" + image.user.id.to_s %>"><%= image_tag image.user.gravatar_url %>
+            <a href="<%= profile_path() + "?id=" + image.user.id.to_s %>"><%= image_tag image.user.gravatar_url, :size => "45x45"  %>
             </a>
             <% end %>
         </div>

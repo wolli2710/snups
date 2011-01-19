@@ -1,10 +1,10 @@
 module PagesHelper
   
   def calculate_tag_size(args)
-    counter = 10 
+    counter = 15
     @images.each do |i| 
       if i[:mission_id].to_i == args[:image_mission].mission.id 
-        if counter < 20 
+        if counter < 25
           counter += 0.3 
         end 
       end 

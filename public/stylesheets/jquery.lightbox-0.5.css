@@ -15,7 +15,7 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	z-index: 90;
+	z-index: 109;
 	width: 100%;
 	height: 500px;
 }
@@ -24,19 +24,20 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 100;
+	z-index: 110;
+        height: 380px;
 	text-align: center;
 	line-height: 0;
+        background: url(/images/lightbox_bg.png) no-repeat center;
 }
 #jquery-lightbox a img { border: none; }
 #lightbox-container-image-box {
 	position: relative;
-	background-color: #fff;
 	width: 250px;
 	height: 250px;
 	margin: 0 auto;
 }
-#lightbox-container-image { padding: 10px; }
+#lightbox-container-image { padding: 30px 10px; }
 #lightbox-loading {
 	position: absolute;
 	top: 40%;
@@ -57,10 +58,7 @@
 #lightbox-container-image-box > #lightbox-nav { left: 0; }
 #lightbox-nav a { outline: none;}
 #lightbox-nav-btnPrev, #lightbox-nav-btnNext {
-	width: 49%;
-	height: 100%;
-	zoom: 1;
-	display: block;
+	display: none;
 }
 #lightbox-nav-btnPrev { 
 	left: 0; 
@@ -72,8 +70,7 @@
 }
 #lightbox-container-image-data-box {
 	font: 10px Verdana, Helvetica, sans-serif;
-	background-color: #fff;
-	margin: 0 auto;
+	margin: 15px auto;
 	line-height: 1.4em;
 	overflow: auto;
 	width: 100%;
@@ -84,9 +81,7 @@
 	color: #666; 
 }
 #lightbox-container-image-data #lightbox-image-details { 
-	width: 70%; 
-	float: left; 
-	text-align: left; 
+	display:none;
 }	
 #lightbox-image-details-caption { font-weight: bold; }
 #lightbox-image-details-currentNumber {

@@ -2,6 +2,7 @@
 <% @image_mission_id.each do |image_mission| %>
   <%= link_to image_mission.mission.title, gallery_path() + '?title=' + image_mission.mission.title,
     :style => "font-size:" + calculate_tag_size(:image_mission => image_mission) + "px", :class => "tag_cloud" %> 
+  <%= " - " unless image_mission == @image_mission_id.last %>
 <% end %>
 <br/>
 <br/>

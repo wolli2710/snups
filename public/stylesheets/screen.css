@@ -232,7 +232,9 @@ h1, h2, h3 {
 }
 
 #info a {
-	font-size:11px;
+	font-size:12px;
+        text-decoration:none;
+
 }
 
 a {
@@ -243,7 +245,7 @@ a:hover {
 	color:#473e30;
 }
 
-#content ul {
+#content ol {
 	margin: 20px;
 }
 
@@ -262,7 +264,13 @@ a:hover {
 }
 
 a.tag_cloud {
-	color:#04AA02
+       font-family: 'ArmWrestler', "Comic Sans MS", cursive;
+       color:#a9844a;
+       text-decoration:none;
+}
+
+a:hover.tag_cloud {
+    color: #000;
 }
 
 .gallery_images {
@@ -270,7 +278,7 @@ a.tag_cloud {
 	border: 1px solid #998260;
 	text-align: center;
 	padding: 1px;
-	margin: 2px;
+	margin: 12px;
 }
 
 .foto_stream_item {
@@ -279,8 +287,9 @@ a.tag_cloud {
 }
 
 .foto_avatar_col {
-	width: 100px;
-	text-align: center;
+	width: 95px;
+	text-align: right;
+        padding-right: 5px;
 }
 
 .foto_col {
@@ -302,6 +311,10 @@ a.tag_cloud {
 
 .comment_new {
 	margin-left: 50px;
+}
+
+.rating img {
+    margin-top: 5px;
 }
 
 .float_right {
@@ -335,11 +348,11 @@ a.tag_cloud {
 }
 
 #flash_alert, #error_explanation {
-	background: #be4646;
+	color: #e30000;
 }
 
 #flash_notice {
-	background: #87be46;
+	color: #0caa00;
 }
 /*--------sidebar--------*/
 
@@ -420,6 +433,8 @@ img#logo {
 
 #info {
 	margin-left:0px;
+        text-decoration:none;
+        font-size:11px;
 }
   
 }
