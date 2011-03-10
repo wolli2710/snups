@@ -25,4 +25,7 @@ class User < ActiveRecord::Base
   validates :name, :length => {:minimum => 3}
   validates_uniqueness_of :name
 
+  def self.check_user_and_password(params)
+    User.find(params[:image][:user_id]).valid_password?(params[:image][:password])
+  end
 end

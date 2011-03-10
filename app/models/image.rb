@@ -10,30 +10,22 @@ class Image < ActiveRecord::Base
 	belongs_to :mission
 	belongs_to :user
   
-  attr_accessible :user_id, :mission_id, :nameHash
+  attr_accessible :user_id, :mission_id, :nameHash, :image_data
   
   validates :user_id, :presence => true, :numericality => true
   validates :mission_id, :presence => true, :numericality => true
 
-  def delete_image_files
-    File.delete("#{Rails.root}/public/images/upload/#{self.nameHash}_high.jpg")
-    File.delete("#{Rails.root}/public/images/upload/#{self.nameHash}_medium.jpg")
-    File.delete("#{Rails.root}/public/images/upload/#{self.nameHash}_low.jpg")
-  end
-
-  def self.handle_upload(image, params)
-
-    image_name = Time.now.to_s+params[:username]
-    image.nameHash = Digest::SHA1.hexdigest(image_name)
-
-    input_path = params[:image].path()
-
+  def image_data=(var)
+    
+    image_name = Time.now.to_s+rand(1000).to_s
+    self.nameHash = Digest::SHA1.hexdigest(image_name)
+    
     main_path = Rails.root.to_s + "/public/images/upload/"
-    output_high = main_path + image.nameHash + "_high.jpg"
-    output_medium = main_path + image.nameHash + "_medium.jpg"
-    output_low = main_path + image.nameHash + "_low.jpg"
+    output_high = main_path + nameHash + "_high.jpg"
+    output_medium = main_path + nameHash + "_medium.jpg"
+    output_low = main_path + nameHash + "_low.jpg"
 
-    uploaded_image = MiniMagick::Image.open(input_path)
+    uploaded_image = MiniMagick::Image.open(var.path)
 
     uploaded_image.write output_high
 
@@ -42,11 +34,16 @@ class Image < ActiveRecord::Base
 
     uploaded_image = resize_and_crop(uploaded_image, 100)
     uploaded_image.write output_low
-
-    return image
+    
   end
   
-  def self.resize_and_crop(image, size)
+  def delete_image_files
+    File.delete("#{Rails.root}/public/images/upload/#{self.nameHash}_high.jpg")
+    File.delete("#{Rails.root}/public/images/upload/#{self.nameHash}_medium.jpg")
+    File.delete("#{Rails.root}/public/images/upload/#{self.nameHash}_low.jpg")
+  end
+
+  def resize_and_crop(image, size)
     if image[:width] < image[:height]
       shave_off = ((
         image[:height]-
@@ -62,7 +59,7 @@ class Image < ActiveRecord::Base
     return image
   end
 
-  def self.resize_and_crop_banner(image, w, h)
+  def resize_and_crop_banner(image, w, h)
     size = w.to_s + "x" + h.to_s
 
     image = resize_and_crop(image, w)
